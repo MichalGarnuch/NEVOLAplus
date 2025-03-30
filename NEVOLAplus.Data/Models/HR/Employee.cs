@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NEVOLAplus.Intranet.Models.HR
+namespace NEVOLAplus.Data.Models.HR
 {
     public class Employee
     {

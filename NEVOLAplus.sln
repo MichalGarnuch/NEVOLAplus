@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEVOLAplus.Portal", "NEVOLAplus.Portal\NEVOLAplus.Portal.csproj", "{A8EB6D41-F1AA-4490-8C48-89294CEFB690}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEVOLAplus.Intranet", "NEVOLAplus.Intranet\NEVOLAplus.Intranet.csproj", "{558C842B-675E-4C09-9880-6FD44FBEF18A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEVOLAplus.Data", "NEVOLAplus.Data\NEVOLAplus.Data.csproj", "{8C5F4DEF-0486-4019-8024-13A134A5B9CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{558C842B-675E-4C09-9880-6FD44FBEF18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{558C842B-675E-4C09-9880-6FD44FBEF18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{558C842B-675E-4C09-9880-6FD44FBEF18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C5F4DEF-0486-4019-8024-13A134A5B9CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5F4DEF-0486-4019-8024-13A134A5B9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5F4DEF-0486-4019-8024-13A134A5B9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5F4DEF-0486-4019-8024-13A134A5B9CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

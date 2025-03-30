@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using NEVOLAplus.Intranet.Data;
+using NEVOLAplus.Data;
 
 namespace NEVOLAplus.Intranet
 

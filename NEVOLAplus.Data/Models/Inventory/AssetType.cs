@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NEVOLAplus.Intranet.Models.Inventory
+namespace NEVOLAplus.Data.Models.Inventory
 {
     public class AssetType
     {

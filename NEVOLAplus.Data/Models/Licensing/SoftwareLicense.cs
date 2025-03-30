@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NEVOLAplus.Intranet.Models.Licensing
+namespace NEVOLAplus.Data.Models.Licensing
 {
     public class SoftwareLicense
     {

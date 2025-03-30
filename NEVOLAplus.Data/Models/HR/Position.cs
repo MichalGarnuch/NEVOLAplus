@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NEVOLAplus.Intranet.Models.HR
+namespace NEVOLAplus.Data.Models.HR
 {
     public class Position
     {

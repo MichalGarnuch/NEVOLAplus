@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NEVOLAplus.Intranet.Models.CMS;
-using NEVOLAplus.Intranet.Models.HR;
-using NEVOLAplus.Intranet.Models.Inventory;
-using NEVOLAplus.Intranet.Models.Licensing;
-using NEVOLAplus.Intranet.Models.Reservation;
+using NEVOLAplus.Data.Models.CMS;
+using NEVOLAplus.Data.Models.HR;
+using NEVOLAplus.Data.Models.Inventory;
+using NEVOLAplus.Data.Models.Licensing;
+using NEVOLAplus.Data.Models.Reservation;
 
-namespace NEVOLAplus.Intranet.Data
+namespace NEVOLAplus.Data
 {
     public class NevolaIntranetContext : DbContext
     {

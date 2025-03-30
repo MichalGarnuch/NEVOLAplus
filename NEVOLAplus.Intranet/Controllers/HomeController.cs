@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using NEVOLAplus.Intranet.Models;
+using NEVOLAplus.Data.Models;
 
 namespace NEVOLAplus.Intranet.Controllers;
 

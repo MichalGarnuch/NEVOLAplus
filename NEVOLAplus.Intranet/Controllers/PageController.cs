@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NEVOLAplus.Intranet.Data;
-using NEVOLAplus.Intranet.Models.CMS;
+using NEVOLAplus.Data;
+using NEVOLAplus.Data.Models.CMS;
 
 namespace NEVOLAplus.Intranet.Controllers
 {

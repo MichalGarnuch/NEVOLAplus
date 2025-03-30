@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using NEVOLAplus.Intranet.Models.Inventory;  // Jeśli chcesz rezerwować Asset
-using NEVOLAplus.Intranet.Models.HR;        // Jeśli rezerwuje Employee
+using NEVOLAplus.Data.Models.Inventory;  // Jeśli chcesz rezerwować Asset
+using NEVOLAplus.Data.Models.HR;        // Jeśli rezerwuje Employee
 
-namespace NEVOLAplus.Intranet.Models.Reservation
+namespace NEVOLAplus.Data.Models.Reservation
 {
     public class Reservation
     {
