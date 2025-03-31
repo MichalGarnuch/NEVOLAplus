@@ -7,65 +7,130 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ViewData["Title"] - NEVOLAplus</title>
+    <title>@ViewData["Title"] - NEVOLAplus.Portal</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
         body {
-            background-image: url('/image/TloBiznesowe7.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
             margin: 0;
+            background-color: #f1f3f5;
+            display: flex;
         }
+
+        .sidebar {
+            width: 220px;
+            background-color: #1c1c1c;
+            min-height: 100vh;
+            padding-top: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .sidebar .nav-link {
+                color: #adb5bd;
+            }
+
+                .sidebar .nav-link:hover,
+                .sidebar .nav-link.active {
+                    color: white;
+                    font-weight: bold;
+                }
+
+        .main-content-wrapper {
+            flex: 1;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .navbar {
+            background-color: #198754 !important;
+        }
+
+            .navbar .navbar-brand {
+                color: white !important;
+                font-weight: bold;
+                font-size: 1.1rem;
+            }
+
+        .main-content {
+            background-color: white;
+            padding: 2rem;
+            min-height: calc(100vh - 56px);
+        }
+
+        .sidebar-hidden .sidebar {
+            margin-left: -220px;
+        }
+
+        .sidebar-hidden .main-content-wrapper {
+            margin-left: 0 !important;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            color: #666;
+        }
+
+        .toggle-sidebar {
+            cursor: pointer;
+            color: #adb5bd;
+            font-size: 1.5rem;
+            user-select: none;
+        }
+
+            .toggle-sidebar:hover {
+                color: white;
+            }
+
         .logo {
             height: 40px;
         }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-dark bg-opacity-50 mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white me-2" asp-controller="Home" asp-action="Index">
-                <img src="/image/nevola.png" class="logo" alt="Logo" />
-            </a>
-            <button class="btn btn-success me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
-                Menu
-            </button>
-
-            <form class="d-flex ms-auto">
-                <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Szukaj" />
-                <button class="btn btn-success" type="submit">Szukaj</button>
-                <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
-            </form>
-        </div>
-    </nav>
-
-    <!-- Sidebar menu -->
-    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="sidebarMenu">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link text-white" asp-controller="Home" asp-action="Index">Strona główna</a></li>
-                <li class="nav-item"><a class="nav-link text-white" asp-controller="Ogólne" asp-action="PanelUzytkownika">Panel użytkownika</a></li>
-                <li class="nav-item"><a class="nav-link text-white" asp-controller="Ogólne" asp-action="MojeAktualnosci">Moje aktualności</a></li>
-                <li class="nav-item"><a class="nav-link text-white" asp-controller="Pracownik" asp-action="DaneKadrowe">Dane kadrowe</a></li>
-            </ul>
-        </div>
+<body class="sidebar-visible">
+    <div class="sidebar" id="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Strona główna</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Page" asp-action="Index">Pages</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="News" asp-action="Index">News</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Asset" asp-action="Index">Assets</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Reservation" asp-action="Index">Reservations</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="TextSnippet" asp-action="Index">TextSnippets</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Employee" asp-action="Index">Employees</a></li>
+        </ul>
     </div>
 
-    <main class="container py-4">
-        @RenderBody()
-    </main>
+    <div class="main-content-wrapper" id="mainWrapper">
+        <nav class="navbar navbar-expand-lg shadow">
+            <div class="container-fluid">
+                <span class="toggle-sidebar" id="toggleBtn" onclick="toggleSidebar()">‹</span>
+                <span class="navbar-brand ms-2">
+                    <img src="/image/nevola.png" class="logo" alt="Logo" /> NEVOLAplus.Portal
+                </span>
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Szukaj" />
+                    <button class="btn btn-outline-light" type="submit">Szukaj</button>
+                    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
+                </form>
+            </div>
+        </nav>
 
-    <footer class="text-center text-muted border-top py-3 mt-4">
-        &copy; 2025 - NEVOLAplus
-    </footer>
+        <main class="main-content">
+            <h1 class="mb-4">@ViewData["Title"]</h1>
+            @RenderBody()
+        </main>
+
+        <footer class="text-center py-3 border-top">
+            &copy; 2025 - NEVOLAplus.Portal
+        </footer>
+    </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSidebar() {
+            document.body.classList.toggle("sidebar-hidden");
+            const toggleBtn = document.getElementById("toggleBtn");
+            toggleBtn.textContent = document.body.classList.contains("sidebar-hidden") ? '›' : '‹';
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

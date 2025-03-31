@@ -1,73 +1,128 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NEVOLAplus.Intranet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/NEVOLAplus.Intranet.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            margin: 0;
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #1c1c1c;
+            min-height: 100vh;
+            padding-top: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .sidebar .nav-link {
+                color: #adb5bd;
+            }
+
+                .sidebar .nav-link:hover,
+                .sidebar .nav-link.active {
+                    color: white;
+                    font-weight: bold;
+                }
+
+        .main-content-wrapper {
+            flex: 1;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .navbar {
+            background-color: #198754 !important;
+        }
+
+            .navbar .navbar-brand {
+                color: white !important;
+                font-weight: bold;
+                font-size: 1.1rem;
+            }
+
+        .main-content {
+            background-color: white;
+            padding: 2rem;
+            min-height: calc(100vh - 56px);
+        }
+
+        .sidebar-hidden .sidebar {
+            margin-left: -220px;
+        }
+
+        .sidebar-hidden .main-content-wrapper {
+            margin-left: 0 !important;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            color: #666;
+        }
+
+        .toggle-sidebar {
+            cursor: pointer;
+            color: #adb5bd;
+            font-size: 1.5rem;
+            user-select: none;
+        }
+
+            .toggle-sidebar:hover {
+                color: white;
+            }
+    </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NEVOLAplus.Intranet</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Page" asp-action="Index">Pages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="News" asp-action="Index">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Employee" asp-action="Index">Employees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Position" asp-action="Index">Positiones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Asset" asp-action="Index">Assets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="AssetType" asp-action="Index">AssetTypes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Reservation" asp-action="Index">Reservations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="SoftwareLicense" asp-action="Index">SoftwareLicenses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+<body class="sidebar-visible">
+    <div class="sidebar" id="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" asp-controller="Page" asp-action="Index">Pages</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="News" asp-action="Index">News</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Employee" asp-action="Index">Employees</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Position" asp-action="Index">Positiones</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Asset" asp-action="Index">Assets</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="AssetType" asp-action="Index">AssetTypes</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Reservation" asp-action="Index">Reservations</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="SoftwareLicense" asp-action="Index">SoftwareLicenses</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+        </ul>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - NEVOLAplus.Intranet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <div class="main-content-wrapper" id="mainWrapper">
+        <nav class="navbar navbar-expand-lg shadow">
+            <div class="container-fluid">
+                <span class="toggle-sidebar" id="toggleBtn" onclick="toggleSidebar()">‹</span>
+                <span class="navbar-brand ms-2">NEVOLAplus.Intranet</span>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <h1 class="mb-4">@ViewData["Title"]</h1>
+            @RenderBody()
+        </main>
+
+        <footer class="text-center py-3 border-top">
+            &copy; 2025 - NEVOLAplus.Intranet
+        </footer>
+    </div>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function toggleSidebar() {
+            document.body.classList.toggle("sidebar-hidden");
+            const toggleBtn = document.getElementById("toggleBtn");
+            toggleBtn.textContent = document.body.classList.contains("sidebar-hidden") ? '›' : '‹';
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
