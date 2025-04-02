@@ -41,13 +41,20 @@
         }
 
         .navbar {
-            background-color: #198754 !important;
+            background-color: #28a745 !important;
         }
 
             .navbar .navbar-brand {
                 color: white !important;
                 font-weight: bold;
                 font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar .logo {
+                height: 36px;
+                margin-right: 10px;
             }
 
         .main-content {
@@ -70,19 +77,26 @@
         }
 
         .toggle-sidebar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #28a745; /* kolor menu */
+            color: white; /* strzałka biała */
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            color: #adb5bd;
-            font-size: 1.5rem;
             user-select: none;
+            transition: background-color 0.2s ease-in-out;
         }
 
             .toggle-sidebar:hover {
-                color: white;
+                background-color: #218838; /* ciemniejszy zielony po najechaniu */
             }
 
-        .logo {
-            height: 40px;
-        }
     </style>
 </head>
 <body class="sidebar-visible">
@@ -99,18 +113,18 @@
     </div>
 
     <div class="main-content-wrapper" id="mainWrapper">
-        <nav class="navbar navbar-expand-lg shadow">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg shadow px-3">
+            <div class="d-flex align-items-center">
                 <span class="toggle-sidebar" id="toggleBtn" onclick="toggleSidebar()">‹</span>
-                <span class="navbar-brand ms-2">
+                <span class="navbar-brand">
                     <img src="/image/nevola.png" class="logo" alt="Logo" /> NEVOLAplus.Portal
                 </span>
-                <form class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Szukaj" />
-                    <button class="btn btn-outline-light" type="submit">Szukaj</button>
-                    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
-                </form>
             </div>
+            <form class="d-flex ms-auto">
+                <input class="form-control me-2" type="search" placeholder="Szukaj..." aria-label="Szukaj" />
+                <button class="btn btn-outline-light" type="submit">Szukaj</button>
+                <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
+            </form>
         </nav>
 
         <main class="main-content">

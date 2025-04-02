@@ -25,4 +25,8 @@
     <ProjectReference Include="..\NEVOLAplus.Data\NEVOLAplus.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
 </Project>
