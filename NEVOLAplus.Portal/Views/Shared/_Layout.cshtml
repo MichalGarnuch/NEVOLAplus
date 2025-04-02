@@ -11,128 +11,51 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
-        body {
-            margin: 0;
-            background-color: #f1f3f5;
-            display: flex;
+        .nav-pills .nav-link:hover {
+            background-color: #343a40;
+            color: #ffffff;
         }
-
-        .sidebar {
-            width: 220px;
-            background-color: #1c1c1c;
-            min-height: 100vh;
-            padding-top: 1rem;
-            transition: all 0.3s ease-in-out;
-        }
-
-            .sidebar .nav-link {
-                color: #adb5bd;
-            }
-
-                .sidebar .nav-link:hover,
-                .sidebar .nav-link.active {
-                    color: white;
-                    font-weight: bold;
-                }
-
-        .main-content-wrapper {
-            flex: 1;
-            transition: margin-left 0.3s ease-in-out;
-        }
-
-        .navbar {
-            background-color: #28a745 !important;
-        }
-
-            .navbar .navbar-brand {
-                color: white !important;
-                font-weight: bold;
-                font-size: 1.1rem;
-                display: flex;
-                align-items: center;
-            }
-
-            .navbar .logo {
-                height: 36px;
-                margin-right: 10px;
-            }
-
-        .main-content {
-            background-color: white;
-            padding: 2rem;
-            min-height: calc(100vh - 56px);
-        }
-
-        .sidebar-hidden .sidebar {
-            margin-left: -220px;
-        }
-
-        .sidebar-hidden .main-content-wrapper {
-            margin-left: 0 !important;
-        }
-
-        footer {
-            background-color: #f8f9fa;
-            color: #666;
-        }
-
-        .toggle-sidebar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #28a745; /* kolor menu */
-            color: white; /* strzałka biała */
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            user-select: none;
-            transition: background-color 0.2s ease-in-out;
-        }
-
-            .toggle-sidebar:hover {
-                background-color: #218838; /* ciemniejszy zielony po najechaniu */
-            }
-
     </style>
 </head>
-<body class="sidebar-visible">
-    <div class="sidebar" id="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Strona główna</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Page" asp-action="Index">Pages</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="News" asp-action="Index">News</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Asset" asp-action="Index">Assets</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Reservation" asp-action="Index">Reservations</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="TextSnippet" asp-action="Index">TextSnippets</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Employee" asp-action="Index">Employees</a></li>
-        </ul>
+<body class="d-flex">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3 d-flex flex-column" style="width: 220px; min-height: 100vh;" id="sidebar">
+        <div class="text-center fw-bold mb-3">MENU</div>
+        <nav class="nav flex-column nav-pills">
+            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Strona główna</a>
+            <a class="nav-link text-white" asp-controller="Page" asp-action="Index">Pages</a>
+            <a class="nav-link text-white" asp-controller="News" asp-action="Index">News</a>
+            <a class="nav-link text-white" asp-controller="Asset" asp-action="Index">Assets</a>
+            <a class="nav-link text-white" asp-controller="Reservation" asp-action="Index">Reservations</a>
+            <a class="nav-link text-white" asp-controller="TextSnippet" asp-action="Index">TextSnippets</a>
+            <a class="nav-link text-white" asp-controller="Employee" asp-action="Index">Employees</a>
+        </nav>
     </div>
 
-    <div class="main-content-wrapper" id="mainWrapper">
-        <nav class="navbar navbar-expand-lg shadow px-3">
-            <div class="d-flex align-items-center">
-                <span class="toggle-sidebar" id="toggleBtn" onclick="toggleSidebar()">‹</span>
-                <span class="navbar-brand">
-                    <img src="/image/nevola.png" class="logo" alt="Logo" /> NEVOLAplus.Portal
+
+    <!-- Main content -->
+    <div class="flex-grow-1">
+        <nav class="navbar navbar-expand-lg bg-success text-white shadow px-3">
+            <div class="d-flex align-items-center w-100">
+                <button class="btn btn-success text-white me-3" onclick="toggleSidebar()" id="toggleBtn">‹</button>
+                <span class="d-flex align-items-center fw-bold">
+                    <img src="/image/Logo.jpg" alt="Logo" height="36" class="me-2" />
+                    Portal
                 </span>
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Szukaj..." />
+                    <button class="btn btn-outline-light" type="submit">Szukaj</button>
+                    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
+                </form>
             </div>
-            <form class="d-flex ms-auto">
-                <input class="form-control me-2" type="search" placeholder="Szukaj..." aria-label="Szukaj" />
-                <button class="btn btn-outline-light" type="submit">Szukaj</button>
-                <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
-            </form>
         </nav>
 
-        <main class="main-content">
+        <main class="p-4 bg-white min-vh-100">
             <h1 class="mb-4">@ViewData["Title"]</h1>
             @RenderBody()
         </main>
 
-        <footer class="text-center py-3 border-top">
+        <footer class="text-center text-muted py-3 border-top bg-light">
             &copy; 2025 - NEVOLAplus.Portal
         </footer>
     </div>
@@ -140,9 +63,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleSidebar() {
-            document.body.classList.toggle("sidebar-hidden");
+            document.getElementById("sidebar").classList.toggle("d-none");
             const toggleBtn = document.getElementById("toggleBtn");
-            toggleBtn.textContent = document.body.classList.contains("sidebar-hidden") ? '›' : '‹';
+            toggleBtn.textContent = document.getElementById("sidebar").classList.contains("d-none") ? '›' : '‹';
         }
     </script>
     @await RenderSectionAsync("Scripts", required: false)
