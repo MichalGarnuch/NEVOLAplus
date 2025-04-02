@@ -45,10 +45,16 @@
                     <img src="/image/Logo.jpg" alt="Logo" height="36" class="me-2" />
                     Intranet
                 </span>
-                <form class="d-flex ms-auto">
+                <form class="d-flex ms-auto align-items-center">
                     <input class="form-control me-2" type="search" placeholder="Szukaj..." />
-                    <button class="btn btn-outline-light" type="submit">Szukaj</button>
-                    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger ms-2">Wyloguj</a>
+
+                    <!-- Sama ikona szukaj -->
+                    <img src="/image/Szukaj.jpg" alt="Szukaj" style="height: 24px; cursor: pointer;" onclick="this.closest('form').submit()" />
+
+                    <!-- Sama ikona wyloguj -->
+                    <a asp-controller="Account" asp-action="Logout" class="ms-3">
+                        <img src="/image/Wyloguj.jpg" alt="Wyloguj" style="height: 24px; cursor: pointer;" />
+                    </a>
                 </form>
             </div>
         </nav>
