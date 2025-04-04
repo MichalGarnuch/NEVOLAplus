@@ -22,18 +22,20 @@
     <div class="bg-dark text-white p-3 d-flex flex-column" style="width: 220px; min-height: 100vh;" id="sidebar">
         <div class="text-center fw-bold mb-3">MENU</div>
         <nav class="nav flex-column nav-pills">
+            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
             <a class="nav-link text-white" asp-controller="Page" asp-action="Index">Pages</a>
             <a class="nav-link text-white" asp-controller="News" asp-action="Index">News</a>
             <a class="nav-link text-white" asp-controller="Employee" asp-action="Index">Employees</a>
-            <a class="nav-link text-white" asp-controller="Position" asp-action="Index">Positiones</a>
+            <a class="nav-link text-white" asp-controller="Position" asp-action="Index">Positions</a>
             <a class="nav-link text-white" asp-controller="Asset" asp-action="Index">Assets</a>
-            <a class="nav-link text-white" asp-controller="AssetType" asp-action="Index">AssetTypes</a>
+            <a class="nav-link text-white" asp-controller="AssetType" asp-action="Index">Asset Types</a>
             <a class="nav-link text-white" asp-controller="Reservation" asp-action="Index">Reservations</a>
-            <a class="nav-link text-white" asp-controller="SoftwareLicense" asp-action="Index">SoftwareLicenses</a>
-            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="nav-link text-white" asp-controller="SoftwareLicense" asp-action="Index">Software Licenses</a>
             <a class="nav-link text-white" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </nav>
+
     </div>
+
 
 
     <!-- Main content -->
@@ -42,8 +44,10 @@
             <div class="d-flex align-items-center w-100">
                 <button class="btn btn-success text-white me-3" onclick="toggleSidebar()" id="toggleBtn">‹</button>
                 <span class="d-flex align-items-center fw-bold">
-                    <img src="/image/Logo.jpg" alt="Logo" height="36" class="me-2" />
-                    Intranet
+                    <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center text-white text-decoration-none">
+                        <img src="/image/Logo.jpg" alt="Logo" height="36" class="me-2" />
+                        Intranet
+                    </a>
                 </span>
                 <form class="d-flex ms-auto align-items-center">
                     <input class="form-control me-2" type="search" placeholder="Szukaj..." />
