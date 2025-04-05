@@ -1,53 +1,40 @@
 ﻿@model IEnumerable<NEVOLAplus.Data.Models.CMS.Page>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pages";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Pages</h2>
+    <a asp-action="Create" class="btn btn-success">+ Add New Page</a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LinkTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Heading)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DisplayOrder)
-            </th>
-            <th></th>
+            <th>Link Title</th>
+            <th>Heading</th>
+            <th>Content</th>
+            <th>Display Order</th>
+            <th style="width: 180px;">Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LinkTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Heading)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisplayOrder)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PageId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PageId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PageId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.LinkTitle</td>
+                <td>@item.Heading</td>
+                <td>@item.Content</td>
+                <td>@item.DisplayOrder</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-warning btn-sm">✏️</a>
+                        <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-info btn-sm">ℹ️</a>
+                        <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-danger btn-sm">🗑️</a>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
