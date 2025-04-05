@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using NEVOLAplus.Data;
+
 namespace NEVOLAplus.Portal
 {
     public class Program
@@ -8,6 +11,9 @@ namespace NEVOLAplus.Portal
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<NevolaIntranetContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("NevolaIntranetContext")));
 
             var app = builder.Build();
 
