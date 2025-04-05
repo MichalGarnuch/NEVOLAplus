@@ -13,6 +13,7 @@
         <tr>
             <th>Link Title</th>
             <th>Title</th>
+            <th>Content</th>
             <th>Display Order</th>
             <th></th>
         </tr>
@@ -23,11 +24,12 @@
             <tr>
                 <td>@item.LinkTitle</td>
                 <td>@item.Title</td>
+                <td>@item.Content</td>
                 <td>@item.DisplayOrder</td>
                 <td class="text-end">
-                    <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-sm btn-warning">✏️</a>
-                    <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-sm btn-info text-white">ℹ️</a>
-                    <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-sm btn-danger">🗑️</a>
+                    <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-sm btn-warning">✏️ Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-sm btn-info text-white">ℹ️ Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-sm btn-danger">🗑️ Delete</a>
                 </td>
             </tr>
         }

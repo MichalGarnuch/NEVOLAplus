@@ -1,24 +1,20 @@
 ﻿@model IEnumerable<NEVOLAplus.Data.Models.Licensing.SoftwareLicense>
-
 @{
     ViewData["Title"] = "Software Licenses";
 }
 
-<h2 class="mb-3">List of Software Licenses</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Software Licenses</h2>
+    <a asp-action="Create" class="btn btn-success">➕ Add License</a>
+</div>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-circle"></i>➕ Add New License
-    </a>
-</p>
-
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-hover table-striped">
     <thead class="table-dark">
         <tr>
-            <th>@Html.DisplayNameFor(model => model.ProductName)</th>
-            <th>@Html.DisplayNameFor(model => model.LicenseKey)</th>
-            <th>@Html.DisplayNameFor(model => model.ValidUntil)</th>
-            <th>Actions</th>
+            <th>Product Name</th>
+            <th>License Key</th>
+            <th>Valid Until</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -28,10 +24,10 @@
                 <td>@item.ProductName</td>
                 <td>@item.LicenseKey</td>
                 <td>@item.ValidUntil.ToShortDateString()</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.SoftwareLicenseId" class="btn btn-sm btn-primary">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.SoftwareLicenseId" class="btn btn-sm btn-info">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.SoftwareLicenseId" class="btn btn-sm btn-danger">Delete</a>
+                <td class="text-end">
+                    <a asp-action="Edit" asp-route-id="@item.SoftwareLicenseId" class="btn btn-sm btn-warning">✏️ Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.SoftwareLicenseId" class="btn btn-sm btn-info text-white">ℹ️ Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.SoftwareLicenseId" class="btn btn-sm btn-danger">🗑️ Delete</a>
                 </td>
             </tr>
         }
