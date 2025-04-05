@@ -1,53 +1,37 @@
 ﻿@model IEnumerable<NEVOLAplus.Data.Models.Inventory.Asset>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Assets";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Assets</h2>
+    <a asp-action="Create" class="btn btn-success">➕ Add Asset</a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PurchaseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AssetType)
-            </th>
+            <th>Name</th>
+            <th>Purchase Date</th>
+            <th>Cost</th>
+            <th>Asset Type</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssetType.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AssetId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AssetId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AssetId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.PurchaseDate.ToShortDateString()</td>
+                <td>@item.Cost.ToString("C")</td>
+                <td>@item.AssetType?.Name</td>
+                <td class="text-end">
+                    <a asp-action="Edit" asp-route-id="@item.AssetId" class="btn btn-sm btn-warning">✏️ Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.AssetId" class="btn btn-sm btn-info text-white">ℹ️ Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.AssetId" class="btn btn-sm btn-danger">🗑️ Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
