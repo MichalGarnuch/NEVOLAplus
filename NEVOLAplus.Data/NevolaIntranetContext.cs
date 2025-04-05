@@ -13,10 +13,24 @@ namespace NEVOLAplus.Data
             : base(options)
         {
         }
+        public NevolaIntranetContext()
+        {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                // Tu wpisz swoją connection string ręcznie
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=NEVOLAplusIntranetDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+            }
+        }
 
         // CMS
         public DbSet<Page> Pages { get; set; } = null!;
         public DbSet<News> News { get; set; } = null!;
+        public DbSet<TextSnippet> TextSnippets { get; set; } = null!;
+
 
         // HR
         public DbSet<Employee> Employees { get; set; } = null!;
