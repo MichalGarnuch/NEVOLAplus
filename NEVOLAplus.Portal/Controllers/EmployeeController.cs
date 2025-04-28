@@ -48,13 +48,12 @@ namespace NEVOLAplus.Portal.Controllers
         // GET: Employee/Create
         public IActionResult Create()
         {
-            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Description");
+            // Wyświetlamy Position.Name
+            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name");
             return View();
         }
 
         // POST: Employee/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeId,FirstName,LastName,Email,Phone,PositionId")] Employee employee)
@@ -65,39 +64,26 @@ namespace NEVOLAplus.Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Description", employee.PositionId);
+            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", employee.PositionId);
             return View(employee);
         }
 
         // GET: Employee/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) return NotFound();
             var employee = await _context.Employees.FindAsync(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Description", employee.PositionId);
+            if (employee == null) return NotFound();
+            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", employee.PositionId);
             return View(employee);
         }
 
         // POST: Employee/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,Email,Phone,PositionId")] Employee employee)
         {
-            if (id != employee.EmployeeId)
-            {
-                return NotFound();
-            }
-
+            if (id != employee.EmployeeId) return NotFound();
             if (ModelState.IsValid)
             {
                 try
@@ -107,18 +93,12 @@ namespace NEVOLAplus.Portal.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    if (!_context.Employees.Any(e => e.EmployeeId == employee.EmployeeId)) return NotFound();
+                    throw;
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Description", employee.PositionId);
+            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", employee.PositionId);
             return View(employee);
         }
 
