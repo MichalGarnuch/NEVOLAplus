@@ -48,13 +48,11 @@ namespace NEVOLAplus.Intranet.Controllers
         // GET: Asset/Create
         public IActionResult Create()
         {
-            ViewData["AssetTypeId"] = new SelectList(_context.AssetTypes, "AssetTypeId", "Name");
+            PopulateAssetTypes();
             return View();
         }
 
         // POST: Asset/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AssetId,Name,PurchaseDate,Cost,AssetTypeId")] Asset asset)
@@ -65,61 +63,54 @@ namespace NEVOLAplus.Intranet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AssetTypeId"] = new SelectList(_context.AssetTypes, "AssetTypeId", "Name", asset.AssetTypeId);
+            PopulateAssetTypes(asset.AssetTypeId);
             return View(asset);
         }
 
         // GET: Asset/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) return NotFound();
             var asset = await _context.Assets.FindAsync(id);
-            if (asset == null)
-            {
-                return NotFound();
-            }
-            ViewData["AssetTypeId"] = new SelectList(_context.AssetTypes, "AssetTypeId", "Name", asset.AssetTypeId);
+            if (asset == null) return NotFound();
+            PopulateAssetTypes(asset.AssetTypeId);
             return View(asset);
         }
 
         // POST: Asset/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AssetId,Name,PurchaseDate,Cost,AssetTypeId")] Asset asset)
         {
-            if (id != asset.AssetId)
-            {
-                return NotFound();
-            }
-
+            if (id != asset.AssetId) return NotFound();
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(asset);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssetExists(asset.AssetId))
-                    {
+                    if (!_context.Assets.Any(e => e.AssetId == asset.AssetId))
                         return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["AssetTypeId"] = new SelectList(_context.AssetTypes, "AssetTypeId", "Name", asset.AssetTypeId);
+            PopulateAssetTypes(asset.AssetTypeId);
             return View(asset);
+        }
+        private void PopulateAssetTypes(int? selectedId = null)
+        {
+            ViewData["AssetTypeId"] = _context.AssetTypes
+                .Select(t => new SelectListItem
+                {
+                    Value = t.AssetTypeId.ToString(),
+                    Text = t.Name,
+                    Selected = (t.AssetTypeId == selectedId)
+                })
+                .ToList();
         }
 
         // GET: Asset/Delete/5

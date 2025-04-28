@@ -49,14 +49,11 @@ namespace NEVOLAplus.Intranet.Controllers
         // GET: Reservation/Create
         public IActionResult Create()
         {
-            ViewData["AssetId"] = new SelectList(_context.Assets, "AssetId", "Name");
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName");
+            PopulateDropdowns();
             return View();
         }
 
         // POST: Reservation/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ReservationId,StartDate,EndDate,Status,AssetId,EmployeeId")] Reservation reservation)
@@ -67,65 +64,66 @@ namespace NEVOLAplus.Intranet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AssetId"] = new SelectList(_context.Assets, "AssetId", "Name", reservation.AssetId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", reservation.EmployeeId);
+            PopulateDropdowns(reservation.AssetId, reservation.EmployeeId);
             return View(reservation);
         }
 
         // GET: Reservation/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) return NotFound();
             var reservation = await _context.Reservations.FindAsync(id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-            ViewData["AssetId"] = new SelectList(_context.Assets, "AssetId", "Name", reservation.AssetId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", reservation.EmployeeId);
+            if (reservation == null) return NotFound();
+            PopulateDropdowns(reservation.AssetId, reservation.EmployeeId);
             return View(reservation);
         }
 
         // POST: Reservation/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ReservationId,StartDate,EndDate,Status,AssetId,EmployeeId")] Reservation reservation)
         {
-            if (id != reservation.ReservationId)
-            {
-                return NotFound();
-            }
-
+            if (id != reservation.ReservationId) return NotFound();
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(reservation);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReservationExists(reservation.ReservationId))
-                    {
+                    if (!_context.Reservations.Any(e => e.ReservationId == reservation.ReservationId))
                         return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["AssetId"] = new SelectList(_context.Assets, "AssetId", "Name", reservation.AssetId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", reservation.EmployeeId);
+            PopulateDropdowns(reservation.AssetId, reservation.EmployeeId);
             return View(reservation);
         }
+
+        private void PopulateDropdowns(int? selectedAsset = null, int? selectedEmployee = null)
+        {
+            ViewData["AssetId"] = _context.Assets
+                .Select(a => new SelectListItem
+                {
+                    Value = a.AssetId.ToString(),
+                    Text = a.Name,
+                    Selected = (a.AssetId == selectedAsset)
+                })
+                .ToList();
+
+            ViewData["EmployeeId"] = _context.Employees
+                .Select(e => new SelectListItem
+                {
+                    Value = e.EmployeeId.ToString(),
+                    Text = e.FirstName + " " + e.LastName,
+                    Selected = (e.EmployeeId == selectedEmployee)
+                })
+                .ToList();
+        }
+
 
         // GET: Reservation/Delete/5
         public async Task<IActionResult> Delete(int? id)
