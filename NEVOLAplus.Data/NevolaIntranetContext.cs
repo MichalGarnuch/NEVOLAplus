@@ -21,7 +21,7 @@ namespace NEVOLAplus.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // Tu wpisz swoją connection string ręcznie
+                //connection string
                 optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=NEVOLAplusIntranetDB;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
