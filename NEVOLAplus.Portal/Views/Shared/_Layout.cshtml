@@ -2,6 +2,8 @@
     Layout = null;
 }
 
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -21,18 +23,26 @@
     <!-- Sidebar -->
     <div class="bg-dark text-white p-3 d-flex flex-column" style="width: 220px; min-height: 100vh;" id="sidebar">
         <div class="text-center fw-bold mb-3">MENU</div>
+
+        @{
+            // Asynchroniczne pobranie wszystkich potrzebnych napisów (razem w jednym bloku)
+            var menuHome = await SnippetService.GetContentByKeyAsync("Menu_Home") ?? "Home";
+            var menuPages = await SnippetService.GetContentByKeyAsync("Menu_Pages") ?? "Pages";
+            var menuNews = await SnippetService.GetContentByKeyAsync("Menu_News") ?? "News";
+            var menuAssets = await SnippetService.GetContentByKeyAsync("Menu_Assets") ?? "Assets";
+            var menuReservations = await SnippetService.GetContentByKeyAsync("Menu_Reservations") ?? "Reservations";
+            var menuTextSnippets = await SnippetService.GetContentByKeyAsync("Menu_TextSnippets") ?? "Text Snippets";
+        }
+
         <nav class="nav flex-column nav-pills">
-            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
-            <a class="nav-link text-white" asp-controller="Page" asp-action="Index">Pages</a>
-            <a class="nav-link text-white" asp-controller="News" asp-action="Index">News</a>
-            <a class="nav-link text-white" asp-controller="Asset" asp-action="Index">Assets</a>
-            <a class="nav-link text-white" asp-controller="Reservation" asp-action="Index">Reservations</a>
-            <a class="nav-link text-white" asp-controller="TextSnippet" asp-action="Index">Text Snippets</a>
-            <a class="nav-link text-white" asp-controller="Employee" asp-action="Index">Employees</a>
+            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">@menuHome</a>
+            <a class="nav-link text-white" asp-controller="Page" asp-action="Index">@menuPages</a>
+            <a class="nav-link text-white" asp-controller="News" asp-action="Index">@menuNews</a>
+            <a class="nav-link text-white" asp-controller="Asset" asp-action="Index">@menuAssets</a>
+            <a class="nav-link text-white" asp-controller="Reservation" asp-action="Index">@menuReservations</a>
+            <a class="nav-link text-white" asp-controller="TextSnippet" asp-action="Index">@menuTextSnippets</a>
         </nav>
     </div>
-
-
 
     <!-- Main content -->
     <div class="flex-grow-1">
@@ -42,7 +52,7 @@
                 <span class="d-flex align-items-center fw-bold">
                     <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center text-white text-decoration-none">
                         <img src="/image/Logo.jpg" alt="Logo" height="36" class="me-2" />
-                        Portal
+                        @(await SnippetService.GetContentByKeyAsync("Portal_Welcome") ?? "Portal")
                     </a>
                 </span>
                 <form class="d-flex ms-auto align-items-center">
@@ -65,7 +75,8 @@
         </main>
 
         <footer class="text-center text-muted py-3 border-top bg-light">
-            &copy; 2025 - NEVOLAplus.Portal
+            &copy; 2025 - NEVOLAplus.Portal|
+            @(await SnippetService.GetContentByKeyAsync("Portal_Privacy") ?? "Privacy Policy")
         </footer>
     </div>
 

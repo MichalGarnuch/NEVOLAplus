@@ -1,20 +1,35 @@
 ﻿@model IEnumerable<NEVOLAplus.Data.Models.CMS.News>
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
+
 @{
-    ViewData["Title"] = "News";
+    // Tytuł widoku (News)
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("News_Index_Title")
+                       ?? "News";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>News</h2>
-    <a asp-action="Create" class="btn btn-success">➕ Add News</a>
+    <h2>@ViewData["Title"]</h2>
+    <a asp-action="Create" class="btn btn-success">
+        <!-- Zwykle "➕ Add News" – można podmienić na snippet, gdybyś wrzucił np. "News_Create_Button". -->
+        @(await SnippetService.GetContentByKeyAsync("News_Create_Button") ?? "➕ Add News")
+    </a>
 </div>
 
 <table class="table table-bordered table-hover table-striped">
     <thead class="table-dark">
         <tr>
-            <th>Link Title</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Display Order</th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("News_Index_Column_LinkTitle") ?? "Link Title")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("News_Index_Column_Title") ?? "Title")
+            </th>
+            <th>
+                @("Content")  @* brak osobnego klucza w SQL – fallback *@
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("News_Index_Column_DisplayOrder") ?? "Display Order")
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -27,9 +42,15 @@
                 <td>@item.Content</td>
                 <td>@item.DisplayOrder</td>
                 <td class="text-end">
-                    <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-sm btn-warning">✏️ Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-sm btn-info text-white">ℹ️ Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-sm btn-danger">🗑️ Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-sm btn-warning">
+                        ✏️ @(await SnippetService.GetContentByKeyAsync("News_Edit_Button") ?? "Edit")
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-sm btn-info text-white">
+                        ℹ️ @(await SnippetService.GetContentByKeyAsync("News_Edit_Button") ?? "Details")
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-sm btn-danger">
+                        🗑️ @(await SnippetService.GetContentByKeyAsync("News_Delete_Button") ?? "Delete")
+                    </a>
                 </td>
             </tr>
         }
