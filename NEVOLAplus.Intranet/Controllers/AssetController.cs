@@ -19,7 +19,7 @@ namespace NEVOLAplus.Intranet.Controllers
             _context = context;
         }
 
-        // GET: Asset
+        // GET: Asset Asset
         public async Task<IActionResult> Index()
         {
             var nevolaIntranetContext = _context.Assets.Include(a => a.AssetType);
