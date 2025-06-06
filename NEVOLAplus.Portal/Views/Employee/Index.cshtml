@@ -1,22 +1,39 @@
 ﻿@model IEnumerable<NEVOLAplus.Data.Models.HR.Employee>
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
+
 @{
-    ViewData["Title"] = "Employees";
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Employee_Index_Title")
+                       ?? "Employees";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Employees</h2>
-    <a asp-action="Create" class="btn btn-success">➕ Add Employee</a>
+    <h2>@ViewData["Title"]</h2>
+    <a asp-action="Create" class="btn btn-success">
+        @(await SnippetService.GetContentByKeyAsync("Employee_Index_Add_Button") ?? "➕ Add Employee")
+    </a>
 </div>
 
 <table class="table table-bordered table-hover table-striped">
     <thead class="table-dark">
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Position</th>
-            <th></th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Employee_Index_Column_FirstName") ?? "First Name")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Employee_Index_Column_LastName") ?? "Last Name")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Employee_Index_Column_Email") ?? "Email")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Employee_Index_Column_Phone") ?? "Phone")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Employee_Index_Column_Position") ?? "Position")
+            </th>
+            <th style="width: 120px;">
+                @(await SnippetService.GetContentByKeyAsync("Global_Actions") ?? "Actions")
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -29,9 +46,15 @@
                 <td>@item.Phone</td>
                 <td>@item.Position?.Name</td>
                 <td class="text-end">
-                    <a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-warning">✏️</a>
-                    <a asp-action="Details" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-info text-white">ℹ️</a>
-                    <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-danger">🗑️</a>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-warning">
+                        @(await SnippetService.GetContentByKeyAsync("Employee_Edit_Button") ?? "✏️")
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-info text-white">
+                        @(await SnippetService.GetContentByKeyAsync("Employee_Details_Button") ?? "ℹ️")
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-danger">
+                        @(await SnippetService.GetContentByKeyAsync("Employee_Delete_Button") ?? "🗑️")
+                    </a>
                 </td>
             </tr>
         }

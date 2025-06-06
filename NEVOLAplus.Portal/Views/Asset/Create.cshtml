@@ -1,47 +1,76 @@
 ﻿@model NEVOLAplus.Data.Models.Inventory.Asset
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
 
 @{
-    ViewData["Title"] = "Create";
+    // Tytuł strony:
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Asset_Create_Title")
+                       ?? "Create Asset";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Asset</h4>
+@* Nagłówek sekcji („Asset”) *@
+<h4>@(await SnippetService.GetContentByKeyAsync("Asset_EntityName_Label") ?? "Asset")</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Name -->
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Asset_Name_Label") ?? "Name")
+                </label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
+            <!-- PurchaseDate -->
             <div class="form-group">
-                <label asp-for="PurchaseDate" class="control-label"></label>
+                <label asp-for="PurchaseDate" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Asset_PurchaseDate_Label") ?? "Purchase Date")
+                </label>
                 <input asp-for="PurchaseDate" class="form-control" />
                 <span asp-validation-for="PurchaseDate" class="text-danger"></span>
             </div>
+
+            <!-- Cost -->
             <div class="form-group">
-                <label asp-for="Cost" class="control-label"></label>
+                <label asp-for="Cost" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Asset_Cost_Label") ?? "Cost")
+                </label>
                 <input asp-for="Cost" class="form-control" />
                 <span asp-validation-for="Cost" class="text-danger"></span>
             </div>
+
+            <!-- AssetTypeId -->
             <div class="form-group">
-                <label asp-for="AssetTypeId" class="control-label"></label>
-                <select asp-for="AssetTypeId" class ="form-control" asp-items="ViewBag.AssetTypeId"></select>
+                <label asp-for="AssetTypeId" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Asset_AssetType_Label") ?? "Asset Type")
+                </label>
+                <select asp-for="AssetTypeId" class="form-control" asp-items="ViewBag.AssetTypeId"></select>
+                <span asp-validation-for="AssetTypeId" class="text-danger"></span>
             </div>
+
+            <!-- Przycisk Create -->
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit"
+                       value="@(await SnippetService.GetContentByKeyAsync("Asset_Create_Button") ?? "Create")"
+                       class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">
+        @(await SnippetService.GetContentByKeyAsync("Asset_BackToList_Link") ?? "Back to List")
+    </a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

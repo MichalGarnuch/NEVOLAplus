@@ -1,52 +1,84 @@
 ﻿@model NEVOLAplus.Data.Models.HR.Employee
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
 
 @{
-    ViewData["Title"] = "Create";
+    // Tytuł widoku
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Employee_Create_Title")
+                       ?? "Create Employee";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Employee</h4>
+<h4>@(await SnippetService.GetContentByKeyAsync("Employee_EntityName_Label") ?? "Employee")</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- FirstName -->
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
+                <label asp-for="FirstName" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Employee_FirstName_Label") ?? "First Name")
+                </label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
+
+            <!-- LastName -->
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
+                <label asp-for="LastName" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Employee_LastName_Label") ?? "Last Name")
+                </label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
+
+            <!-- Email -->
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Employee_Email_Label") ?? "Email")
+                </label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
+            <!-- Phone -->
             <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
+                <label asp-for="Phone" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Employee_Phone_Label") ?? "Phone")
+                </label>
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
+
+            <!-- PositionId -->
             <div class="form-group">
-                <label asp-for="PositionId" class="control-label"></label>
-                <select asp-for="PositionId" class ="form-control" asp-items="ViewBag.PositionId"></select>
+                <label asp-for="PositionId" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Employee_Position_Label") ?? "Position")
+                </label>
+                <select asp-for="PositionId" class="form-control" asp-items="ViewBag.PositionId"></select>
+                <span asp-validation-for="PositionId" class="text-danger"></span>
             </div>
+
+            <!-- Przycisk Create -->
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit"
+                       value="@(await SnippetService.GetContentByKeyAsync("Employee_Create_Button") ?? "Create")"
+                       class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">
+        @(await SnippetService.GetContentByKeyAsync("Employee_BackToList_Link") ?? "Back to List")
+    </a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

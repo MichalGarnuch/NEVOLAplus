@@ -1,8 +1,16 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
+
+@{
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Portal_HomeTitle")
+                       ?? "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">
+        @(await SnippetService.GetContentByKeyAsync("Portal_Welcome") ?? "Welcome")
+        </h1>
+    <p>
+        @(await SnippetService.GetContentByKeyAsync("Portal_HomeDescription")
+            ?? "Learn about building Web apps with ASP.NET Core.")
+    </p>
 </div>

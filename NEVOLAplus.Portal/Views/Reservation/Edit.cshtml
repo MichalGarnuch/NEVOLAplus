@@ -1,54 +1,92 @@
 ﻿@model NEVOLAplus.Data.Models.Reservation.Reservation
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
 
 @{
-    ViewData["Title"] = "Edit";
+    // Tytuł strony: "Edit Reservation"
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Reservation_Edit_Title")
+                       ?? "Edit";
 }
 
-<h1>Edit</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Reservation</h4>
+<h4>@(await SnippetService.GetContentByKeyAsync("Reservation_EntityName_Label") ?? "Reservation")</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ReservationId" />
+
+            <!-- StartDate -->
             <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
+                <label asp-for="StartDate" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Reservation_StartDate_Label")
+                        ?? "Start Date")
+                </label>
                 <input asp-for="StartDate" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
+
+            <!-- EndDate -->
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
+                <label asp-for="EndDate" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Reservation_EndDate_Label")
+                        ?? "End Date")
+                </label>
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
+
+            <!-- Status -->
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
+                <label asp-for="Status" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Reservation_Status_Label")
+                        ?? "Status")
+                </label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
+
+            <!-- AssetId -->
             <div class="form-group">
-                <label asp-for="AssetId" class="control-label"></label>
+                <label asp-for="AssetId" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Reservation_Asset_Label")
+                        ?? "Asset")
+                </label>
                 <select asp-for="AssetId" class="form-control" asp-items="ViewBag.AssetId"></select>
                 <span asp-validation-for="AssetId" class="text-danger"></span>
             </div>
+
+            <!-- EmployeeId -->
             <div class="form-group">
-                <label asp-for="EmployeeId" class="control-label"></label>
+                <label asp-for="EmployeeId" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("Reservation_Employee_Label")
+                        ?? "Employee")
+                </label>
                 <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
                 <span asp-validation-for="EmployeeId" class="text-danger"></span>
             </div>
+
+            <!-- Przycisk Save -->
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit"
+                       value="@(await SnippetService.GetContentByKeyAsync("Reservation_Save_Button")
+                               ?? "Save")"
+                       class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">
+        @(await SnippetService.GetContentByKeyAsync("Reservation_BackToList_Link")
+            ?? "Back to List")
+    </a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

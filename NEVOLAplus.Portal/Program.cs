@@ -15,6 +15,9 @@ namespace NEVOLAplus.Portal
             builder.Services.AddDbContext<NevolaIntranetContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("NevolaIntranetContext")));
 
+            // Po zarejestrowaniu DbContext:
+            builder.Services.AddScoped<NEVOLAplus.Portal.Services.ITextSnippetService, NEVOLAplus.Portal.Services.TextSnippetService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

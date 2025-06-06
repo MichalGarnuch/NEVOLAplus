@@ -1,48 +1,75 @@
 ﻿@model NEVOLAplus.Data.Models.CMS.News
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
 
 @{
-    ViewData["Title"] = "Create";
+    // Tytuł strony (Create News)
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("News_Create_Title")
+                       ?? "Create";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>News</h4>
+<h4>@(await SnippetService.GetContentByKeyAsync("News_EntityName_Label") ?? "News")</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- LinkTitle -->
             <div class="form-group">
-                <label asp-for="LinkTitle" class="control-label"></label>
+                <label asp-for="LinkTitle" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("News_LinkTitle_Label") ?? "Link Title")
+                </label>
                 <input asp-for="LinkTitle" class="form-control" />
                 <span asp-validation-for="LinkTitle" class="text-danger"></span>
             </div>
+
+            <!-- Title -->
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+                <label asp-for="Title" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("News_Title_Label") ?? "Title")
+                </label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
+
+            <!-- Content -->
             <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
+                <label asp-for="Content" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("News_Content_Label") ?? "Content")
+                </label>
+                <textarea asp-for="Content" class="form-control"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
+
+            <!-- DisplayOrder -->
             <div class="form-group">
-                <label asp-for="DisplayOrder" class="control-label"></label>
+                <label asp-for="DisplayOrder" class="control-label">
+                    @(await SnippetService.GetContentByKeyAsync("News_DisplayOrder_Label") ?? "Display Order")
+                </label>
                 <input asp-for="DisplayOrder" class="form-control" />
                 <span asp-validation-for="DisplayOrder" class="text-danger"></span>
             </div>
+
+            <!-- Przycisk Create -->
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit"
+                       value="@(await SnippetService.GetContentByKeyAsync("News_Create_Button") ?? "Create")"
+                       class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">
+        @(await SnippetService.GetContentByKeyAsync("News_BackToList_Link") ?? "Back to List")
+    </a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

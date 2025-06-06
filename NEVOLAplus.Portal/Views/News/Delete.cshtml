@@ -1,45 +1,59 @@
 ﻿@model NEVOLAplus.Data.Models.CMS.News
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
 
 @{
-    ViewData["Title"] = "Delete";
+    // Tytuł strony (Delete News)
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("News_Delete_Title")
+                       ?? "Delete";
 }
 
-<h1>Delete</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>
+    @(await SnippetService.GetContentByKeyAsync("News_Delete_ConfirmText")
+        ?? "Are you sure you want to delete this?")
+</h3>
 <div>
-    <h4>News</h4>
+    <h4>@(await SnippetService.GetContentByKeyAsync("News_EntityName_Label") ?? "News")</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LinkTitle)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.LinkTitle)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Content)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DisplayOrder)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DisplayOrder)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="NewsId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit"
+               value="@(await SnippetService.GetContentByKeyAsync("News_Delete_Button") ?? "Delete")"
+               class="btn btn-danger" />
+        |
+        <a asp-action="Index">
+            @(await SnippetService.GetContentByKeyAsync("News_BackToList_Link") ?? "Back to List")
+        </a>
     </form>
 </div>
