@@ -1,19 +1,34 @@
 ﻿@model IEnumerable<NEVOLAplus.Data.Models.CMS.Page>
+@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
+
 @{
-    ViewData["Title"] = "Pages";
+    // Tytuł widoku: "Pages"
+    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Page_Index_Title")
+                       ?? "Pages";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Pages</h2>
-    <a asp-action="Create" class="btn btn-success">➕ Add Page</a>
+    <h2>@ViewData["Title"]</h2>
+    <a asp-action="Create" class="btn btn-success">
+        @(await SnippetService.GetContentByKeyAsync("Page_Create_Button") ?? "➕ Add Page")
+    </a>
 </div>
 
 <table class="table table-bordered table-hover table-striped">
     <thead class="table-dark">
         <tr>
-            <th>Link Title</th>
-            <th>Heading</th>
-            <th>Display Order</th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Page_Index_Column_LinkTitle")
+                    ?? "Link Title")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Page_Index_Column_Heading")
+                    ?? "Heading")
+            </th>
+            <th>
+                @(await SnippetService.GetContentByKeyAsync("Page_Index_Column_DisplayOrder")
+                    ?? "Display Order")
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -25,9 +40,15 @@
                 <td>@item.Heading</td>
                 <td>@item.DisplayOrder</td>
                 <td class="text-end">
-                    <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-sm btn-warning">✏️ Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-sm btn-info text-white">ℹ️ Detail</a>
-                    <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-sm btn-danger">🗑️ Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-sm btn-warning">
+                        ✏️ @(await SnippetService.GetContentByKeyAsync("Page_Edit_Button") ?? "Edit")
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-sm btn-info text-white">
+                        ℹ️ @(await SnippetService.GetContentByKeyAsync("Page_Edit_Button") ?? "Details")
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-sm btn-danger">
+                        🗑️ @(await SnippetService.GetContentByKeyAsync("Page_Delete_Button") ?? "Delete")
+                    </a>
                 </td>
             </tr>
         }
