@@ -43,10 +43,11 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.NewsId">
+    @* Edycja wyłączona w Portalu *@
+    @*<a asp-action="Edit" asp-route-id="@Model?.NewsId">
         @(await SnippetService.GetContentByKeyAsync("News_Edit_Button") ?? "Edit")
     </a>
-    |
+    |*@
     <a asp-action="Index">
         @(await SnippetService.GetContentByKeyAsync("News_BackToList_Link") ?? "Back to List")
     </a>

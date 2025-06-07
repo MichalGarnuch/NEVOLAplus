@@ -9,9 +9,10 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>@ViewData["Title"]</h2>
-    <a asp-action="Create" class="btn btn-success">
+    @* ➜ Przycisk wyłączony w Portalu *@
+    @*<a asp-action="Create" class="btn btn-success">
         @(await SnippetService.GetContentByKeyAsync("Page_Create_Button") ?? "➕ Add Page")
-    </a>
+    </a>*@
 </div>
 
 <table class="table table-bordered table-hover table-striped">
@@ -40,15 +41,15 @@
                 <td>@item.Heading</td>
                 <td>@item.DisplayOrder</td>
                 <td class="text-end">
-                    <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-sm btn-warning">
-                        ✏️ @(await SnippetService.GetContentByKeyAsync("Page_Edit_Button") ?? "Edit")
-                    </a>
+                    @* <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-sm btn-warning">
+                        ✏️ @(await SnippetService.GetContentByKeyAsync("Page_Edit_Button") ?? "✏️")
+                    </a> *@
                     <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-sm btn-info text-white">
-                        ℹ️ @(await SnippetService.GetContentByKeyAsync("Page_Edit_Button") ?? "Details")
+                        @(await SnippetService.GetContentByKeyAsync("Page_Details_Button") ?? "ℹ️")
                     </a>
-                    <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-sm btn-danger">
+                    @* <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-sm btn-danger">
                         🗑️ @(await SnippetService.GetContentByKeyAsync("Page_Delete_Button") ?? "Delete")
-                    </a>
+                    </a> *@
                 </td>
             </tr>
         }

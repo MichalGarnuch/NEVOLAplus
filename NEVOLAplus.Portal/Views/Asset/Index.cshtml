@@ -9,9 +9,10 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>@ViewData["Title"]</h2>
-    <a asp-action="Create" class="btn btn-success">
+    @* ➜ Przycisk „Add Asset” wyłączony w Portalu *@
+    @* <a asp-action="Create" class="btn btn-success">
         @(await SnippetService.GetContentByKeyAsync("Asset_Index_Add_Button") ?? "➕ Add Asset")
-    </a>
+       </a> *@
 </div>
 
 <table class="table table-bordered table-hover table-striped">
@@ -43,15 +44,21 @@
                 <td>@item.Cost.ToString("C")</td>
                 <td>@item.AssetType?.Name</td>
                 <td class="text-end">
+                    @* ➜ Edit wyłączony *@
+                    @* 
                     <a asp-action="Edit" asp-route-id="@item.AssetId" class="btn btn-sm btn-warning">
-                        @(await SnippetService.GetContentByKeyAsync("Asset_Edit_Button") ?? "Edit")
+                        @(await SnippetService.GetContentByKeyAsync("Asset_Edit_Button") ?? "✏️")
                     </a>
+                    *@
                     <a asp-action="Details" asp-route-id="@item.AssetId" class="btn btn-sm btn-info text-white">
-                        @(await SnippetService.GetContentByKeyAsync("Asset_Details_Button") ?? "Details")
+                        @(await SnippetService.GetContentByKeyAsync("Asset_Details_Button") ?? "ℹ️")
                     </a>
+                    @* ➜ Delete wyłączony *@
+                    @*
                     <a asp-action="Delete" asp-route-id="@item.AssetId" class="btn btn-sm btn-danger">
                         @(await SnippetService.GetContentByKeyAsync("Asset_Delete_Button") ?? "Delete")
                     </a>
+                    *@
                 </td>
             </tr>
         }

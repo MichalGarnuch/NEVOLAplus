@@ -6,7 +6,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Pages</h2>
-    <a asp-action="Create" class="btn btn-success">+ Add New Page</a>
+    <a asp-action="Create" class="btn btn-success">➕ Add  New Page</a>
 </div>
 
 <table class="table table-bordered table-striped table-hover">
@@ -29,9 +29,9 @@
                 <td>@item.DisplayOrder</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-warning btn-sm">✏️</a>
-                        <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-info btn-sm">ℹ️</a>
-                        <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-danger btn-sm">🗑️</a>
+                        <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-warning btn-sm">✏️ Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-info btn-sm">ℹ️ Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-danger btn-sm">🗑️ Delete</a>
                     </div>
                 </td>
             </tr>

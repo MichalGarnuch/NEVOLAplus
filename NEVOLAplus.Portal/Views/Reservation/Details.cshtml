@@ -50,10 +50,11 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ReservationId">
+    @* Edycja wyłączona w Portalu *@
+    @*<a asp-action="Edit" asp-route-id="@Model?.ReservationId">
         @(await SnippetService.GetContentByKeyAsync("Reservation_Edit_Button") ?? "Edit")
     </a>
-    |
+    |*@
     <a asp-action="Index">
         @(await SnippetService.GetContentByKeyAsync("Reservation_BackToList_Link")
             ?? "Back to List")

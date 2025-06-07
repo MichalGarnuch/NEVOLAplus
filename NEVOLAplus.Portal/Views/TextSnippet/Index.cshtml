@@ -5,7 +5,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Text Snippets</h2>
-    <a asp-action="Create" class="btn btn-success">➕ Add Snippet</a>
+    @* <a asp-action="Create" class="btn btn-success">➕ Add Snippet</a> *@
 </div>
 
 <table class="table table-bordered table-hover table-striped">
@@ -23,10 +23,10 @@
                 <td>@item.Key</td>
                 <td>@item.Content</td>
                 <td class="text-end">
-                    <a asp-action="Edit" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-warning">✏️</a>
-                    <a asp-action="Details" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-info text-white">ℹ️</a>
-                    <a asp-action="Delete" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-danger">🗑️</a>
-                </td>
+@*                     <a asp-action="Edit" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-warning">✏️</a>
+ *@                    <a asp-action="Details" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-info text-white">ℹ️</a>
+@*                     <a asp-action="Delete" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-danger">🗑️</a>
+ *@                </td>
             </tr>
         }
     </tbody>

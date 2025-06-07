@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
 @inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
 
 <!DOCTYPE html>
@@ -24,13 +23,14 @@
     <div class="bg-dark text-white p-3 d-flex flex-column" style="width: 220px; min-height: 100vh;" id="sidebar">
         <div class="text-center fw-bold mb-3">MENU</div>
 
+        @* Pobieramy wszystkie napisy tylko raz *@
         @{
-            // Asynchroniczne pobranie wszystkich potrzebnych napisów (razem w jednym bloku)
             var menuHome = await SnippetService.GetContentByKeyAsync("Menu_Home") ?? "Home";
             var menuPages = await SnippetService.GetContentByKeyAsync("Menu_Pages") ?? "Pages";
             var menuNews = await SnippetService.GetContentByKeyAsync("Menu_News") ?? "News";
             var menuAssets = await SnippetService.GetContentByKeyAsync("Menu_Assets") ?? "Assets";
             var menuReservations = await SnippetService.GetContentByKeyAsync("Menu_Reservations") ?? "Reservations";
+            var menuEmployees = await SnippetService.GetContentByKeyAsync("Menu_Employees") ?? "Pracownicy";
             var menuTextSnippets = await SnippetService.GetContentByKeyAsync("Menu_TextSnippets") ?? "Text Snippets";
         }
 
@@ -40,6 +40,7 @@
             <a class="nav-link text-white" asp-controller="News" asp-action="Index">@menuNews</a>
             <a class="nav-link text-white" asp-controller="Asset" asp-action="Index">@menuAssets</a>
             <a class="nav-link text-white" asp-controller="Reservation" asp-action="Index">@menuReservations</a>
+            <a class="nav-link text-white" asp-controller="Employee" asp-action="Index">@menuEmployees</a>
             <a class="nav-link text-white" asp-controller="TextSnippet" asp-action="Index">@menuTextSnippets</a>
         </nav>
     </div>
@@ -57,11 +58,7 @@
                 </span>
                 <form class="d-flex ms-auto align-items-center">
                     <input class="form-control me-2" type="search" placeholder="Szukaj..." />
-
-                    <!-- Sama ikona szukaj -->
                     <img src="/image/Szukaj.jpg" alt="Szukaj" style="height: 24px; cursor: pointer;" onclick="this.closest('form').submit()" />
-
-                    <!-- Sama ikona wyloguj -->
                     <a asp-controller="Account" asp-action="Logout" class="ms-3">
                         <img src="/image/Wyloguj.jpg" alt="Wyloguj" style="height: 24px; cursor: pointer;" />
                     </a>
@@ -75,7 +72,7 @@
         </main>
 
         <footer class="text-center text-muted py-3 border-top bg-light">
-            &copy; 2025 - NEVOLAplus.Portal|
+            &copy; 2025 - NEVOLAplus.Portal |
             @(await SnippetService.GetContentByKeyAsync("Portal_Privacy") ?? "Privacy Policy")
         </footer>
     </div>

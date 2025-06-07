@@ -40,9 +40,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.AssetId">
+    @* Edycja wyłączona w Portalu *@
+    @*<a asp-action="Edit" asp-route-id="@Model?.AssetId">
         @(await SnippetService.GetContentByKeyAsync("Asset_Edit_Button") ?? "Edit")
-    </a> |
+    </a> |*@
     <a asp-action="Index">
         @(await SnippetService.GetContentByKeyAsync("Asset_BackToList_Link") ?? "Back to List")
     </a>
