@@ -1,0 +1,37 @@
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    /* Alternatywy fontu: */
+    /* font-family: "Roboto", sans-serif; */ /* Nowoczesny wygląd */
+    /* font-family: "Georgia", serif; */ /* Klasyczny, z szeryfami */
+}
+
+.navbar {
+    /*  background-color: #136f30 !important;  */ /* ciemniejsza zieleń – domyślna */
+    background-color: #0d6efd !important;  /* klasyczny niebieski Bootstrap */
+    /* background-color: #343a40 !important; */ /* ciemny szary (elegancki) */
+    /* background-color: #ff5722 !important; */ /* intensywny pomarańcz */
+}
+
+#sidebar {
+    background-color: #212529; /* głęboki grafit – domyślny */
+    /* background-color: #1e1e2f; */ /* ciemny fiolet / nocny motyw */
+    /* background-color: #003366; */ /* korporacyjny granat */
+    /* background-color: #f8f9fa; */ /* jasny sidebar (light theme) */
+}
+
+.nav-pills .nav-link.active {
+    background-color: #136f30; /* domyślna zieleń */
+    /* background-color: #198754; */ /* Bootstrap zielony */
+    /* background-color: #ffc107; */ /* jaskrawy żółty */
+    /* background-color: #6610f2; */ /* fioletowy akcent */
+}
+
+footer {
+    font-size: 0.9rem;
+    /* Alternatywy rozmiaru (jeśli chcesz zmieniać styl tekstu): */
+    /* font-size: 0.8rem; */ /* mniejszy */
+    /* font-size: 1rem; */ /* standardowy */
+    /* font-size: 1.1rem; */ /* większy i bardziej czytelny */
+    /* color: #6c757d; */ /* jasny szary tekst */
+    /* color: #ffffff; */ /* biały tekst na ciemnym tle */
+}

@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Style";
+}
+
+<form asp-action="Edit" method="post">
+    <div class="mb-3">
+        <label for="cssContent" class="form-label">Portal CSS</label>
+        <textarea id="cssContent" name="cssContent" class="form-control" rows="15">@ViewBag.CssContent</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>
