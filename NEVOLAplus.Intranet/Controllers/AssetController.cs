@@ -147,6 +147,25 @@ namespace NEVOLAplus.Intranet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteSelected(int[] selectedIds)
+        {
+            if (selectedIds == null || selectedIds.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            var assets = await _context.Assets
+                .Where(a => selectedIds.Contains(a.AssetId))
+                .ToListAsync();
+
+            _context.Assets.RemoveRange(assets);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
         private bool AssetExists(int id)
         {
             return _context.Assets.Any(e => e.AssetId == id);
