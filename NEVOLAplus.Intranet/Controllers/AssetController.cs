@@ -164,8 +164,6 @@ namespace NEVOLAplus.Intranet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-
         private bool AssetExists(int id)
         {
             return _context.Assets.Any(e => e.AssetId == id);

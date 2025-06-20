@@ -2,26 +2,38 @@
 @{
     ViewData["Title"] = "Text Snippets";
 }
-<h2>@ViewData["Title"]</h2>
-<p>
-    <a asp-action="Create" class="btn btn-success">➕ Add Snippet</a>
-</p>
-<table class="table table-striped">
-    <thead>
-        <tr><th>Key</th><th>Content</th><th></th></tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Key</td>
-                <td>@item.Content</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-warning">✏️ Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-info">ℹ️ Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-danger">🗑️ Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<form asp-action="DeleteSelected" method="post">
+    <h2>@ViewData["Title"]</h2>
+    <p>
+        <a asp-action="Create" class="btn btn-success">➕ Add Snippet</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr><th><input type="checkbox" id="select-all" /></th><th>Key</th><th>Content</th><th></th></tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" name="selectedIds" value="@item.TextSnippetId" /></td>
+                    <td>@item.Key</td>
+                    <td>@item.Content</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-warning">✏️ Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-info">ℹ️ Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.TextSnippetId" class="btn btn-sm btn-danger">🗑️ Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-danger mt-2">Delete Selected</button>
+</form>
+
+<script>
+    document.getElementById('select-all').addEventListener('change', function () {
+        const checkboxes = document.querySelectorAll('input[name="selectedIds"]');
+        checkboxes.forEach(cb => cb.checked = this.checked);
+    });
+</script>

@@ -4,37 +4,50 @@
     ViewData["Title"] = "Pages";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Pages</h2>
-    <a asp-action="Create" class="btn btn-success">➕ Add  New Page</a>
-</div>
+<form asp-action="DeleteSelected" method="post">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Pages</h2>
+        <a asp-action="Create" class="btn btn-success">➕ Add  New Page</a>
+    </div>
 
-<table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>Link Title</th>
-            <th>Heading</th>
-            <th>Content</th>
-            <th>Display Order</th>
-            <th style="width: 180px;">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
             <tr>
-                <td>@item.LinkTitle</td>
-                <td>@item.Heading</td>
-                <td>@item.Content</td>
-                <td>@item.DisplayOrder</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-warning btn-sm">✏️ Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-info btn-sm">ℹ️ Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-danger btn-sm">🗑️ Delete</a>
-                    </div>
-                </td>
+                <th><input type="checkbox" id="select-all" /></th>
+                <th>Link Title</th>
+                <th>Heading</th>
+                <th>Content</th>
+                <th>Display Order</th>
+                <th style="width: 180px;">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" name="selectedIds" value="@item.PageId" /></td>
+                    <td>@item.LinkTitle</td>
+                    <td>@item.Heading</td>
+                    <td>@item.Content</td>
+                    <td>@item.DisplayOrder</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-warning btn-sm">✏️ Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.PageId" class="btn btn-info btn-sm">ℹ️ Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-danger btn-sm">🗑️ Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-danger mt-2">Delete Selected</button>
+</form>
+
+<script>
+    document.getElementById('select-all').addEventListener('change', function () {
+        const checkboxes = document.querySelectorAll('input[name="selectedIds"]');
+        checkboxes.forEach(cb => cb.checked = this.checked);
+    });
+</script>

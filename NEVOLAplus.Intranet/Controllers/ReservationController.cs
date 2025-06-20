@@ -160,6 +160,23 @@ namespace NEVOLAplus.Intranet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteSelected(int[] selectedIds)
+        {
+            if (selectedIds == null || selectedIds.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            var reservations = await _context.Reservations
+                .Where(r => selectedIds.Contains(r.ReservationId))
+                .ToListAsync();
+
+            _context.Reservations.RemoveRange(reservations);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool ReservationExists(int id)
         {
             return _context.Reservations.Any(e => e.ReservationId == id);

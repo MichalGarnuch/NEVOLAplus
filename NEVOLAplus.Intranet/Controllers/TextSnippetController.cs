@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NEVOLAplus.Data;
@@ -78,6 +79,23 @@ namespace NEVOLAplus.Intranet.Controllers
             var snip = await _context.TextSnippets.FindAsync(id);
             if (snip != null) _context.TextSnippets.Remove(snip);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteSelected(int[] selectedIds)
+        {
+            if (selectedIds == null || selectedIds.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            var snippets = await _context.TextSnippets
+                .Where(s => selectedIds.Contains(s.TextSnippetId))
+                .ToListAsync();
+
+            _context.TextSnippets.RemoveRange(snippets);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
     }
