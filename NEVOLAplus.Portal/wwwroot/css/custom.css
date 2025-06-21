@@ -7,7 +7,7 @@ body {
 
 .navbar {
     background-color: #136f30 !important; /* ciemniejsza zieleń – domyślna */
-    /*  background-color: #0d6efd !important;  */   /* klasyczny niebieski Bootstrap */
+    /*  background-color: #0d6efd !important;  */  /* klasyczny niebieski Bootstrap */
     /* background-color: #343a40 !important; */ /* ciemny szary (elegancki) */
     /* background-color: #ff5722 !important; */ /* intensywny pomarańcz */
 }
