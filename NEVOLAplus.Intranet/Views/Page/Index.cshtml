@@ -4,12 +4,23 @@
     ViewData["Title"] = "Pages";
 }
 
-<form asp-action="DeleteSelected" method="post">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Pages</h2>
-        <a asp-action="Create" class="btn btn-success">➕ Add  New Page</a>
-    </div>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Pages</h2>
+    <a asp-action="Create" class="btn btn-success">➕ Add  New Page</a>
+</div>
 
+<div class="mb-3">
+    <a asp-action="Export" class="btn btn-primary">⬇️ Eksport do Excel</a>
+</div>
+
+<form asp-action="Import" method="post" enctype="multipart/form-data" class="mb-3">
+    <div class="input-group">
+        <input type="file" name="file" accept=".xlsx" class="form-control" required />
+        <button type="submit" class="btn btn-primary">⬆️ Import z Excel</button>
+    </div>
+</form>
+
+<form asp-action="DeleteSelected" method="post">
     <table class="table table-bordered table-striped table-hover">
         <thead class="table-dark">
             <tr>

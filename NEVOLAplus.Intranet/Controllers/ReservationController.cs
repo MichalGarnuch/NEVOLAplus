@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using NEVOLAplus.Data;
 using NEVOLAplus.Data.Models.Reservation;
 
@@ -174,6 +175,106 @@ namespace NEVOLAplus.Intranet.Controllers
             _context.Reservations.RemoveRange(reservations);
             await _context.SaveChangesAsync();
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Export()
+        {
+            var reservations = await _context.Reservations
+                .Include(r => r.Asset)
+                .Include(r => r.Employee)
+                .ToListAsync();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage();
+            var ws = package.Workbook.Worksheets.Add("Reservations");
+
+            ws.Cells[1, 1].Value = "ReservationId";
+            ws.Cells[1, 2].Value = "StartDate";
+            ws.Cells[1, 3].Value = "EndDate";
+            ws.Cells[1, 4].Value = "Status";
+            ws.Cells[1, 5].Value = "AssetId";
+            ws.Cells[1, 6].Value = "EmployeeId";
+
+            for (int i = 0; i < reservations.Count; i++)
+            {
+                var r = reservations[i];
+                ws.Cells[i + 2, 1].Value = r.ReservationId;
+                ws.Cells[i + 2, 2].Value = r.StartDate.ToString("yyyy-MM-dd");
+                ws.Cells[i + 2, 3].Value = r.EndDate.ToString("yyyy-MM-dd");
+                ws.Cells[i + 2, 4].Value = r.Status;
+                ws.Cells[i + 2, 5].Value = r.AssetId;
+                ws.Cells[i + 2, 6].Value = r.EmployeeId;
+            }
+
+            var stream = new MemoryStream();
+            package.SaveAs(stream);
+            stream.Position = 0;
+            var fileName = $"Reservations-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Import(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            using var stream = new MemoryStream();
+            await file.CopyToAsync(stream);
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage(stream);
+            var ws = package.Workbook.Worksheets.First();
+            var rows = ws.Dimension.Rows;
+
+            for (int row = 2; row <= rows; row++)
+            {
+                var startText = ws.Cells[row, 2].Text;
+                var endText = ws.Cells[row, 3].Text;
+                var status = ws.Cells[row, 4].Text;
+                var assetText = ws.Cells[row, 5].Text; // nazwa assetu
+                var employeeText = ws.Cells[row, 6].Text; // email pracownika
+
+                if (string.IsNullOrWhiteSpace(status) || string.IsNullOrWhiteSpace(assetText) || string.IsNullOrWhiteSpace(employeeText))
+                    continue;
+
+                DateTime.TryParse(startText, out var start);
+                DateTime.TryParse(endText, out var end);
+
+                var asset = await _context.Assets.FirstOrDefaultAsync(a => a.Name == assetText);
+                if (asset == null)
+                {
+                    asset = new NEVOLAplus.Data.Models.Inventory.Asset
+                    {
+                        Name = assetText,
+                        PurchaseDate = DateTime.Now,
+                        Cost = 0
+                    };
+                    _context.Assets.Add(asset);
+                    await _context.SaveChangesAsync();
+                }
+
+                var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == employeeText);
+                if (employee == null)
+                    continue; // brak pracownika
+
+                var res = new Reservation
+                {
+                    StartDate = start == default ? DateTime.Now : start,
+                    EndDate = end == default ? DateTime.Now : end,
+                    Status = status,
+                    AssetId = asset.AssetId,
+                    EmployeeId = employee.EmployeeId
+                };
+                _context.Reservations.Add(res);
+            }
+
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

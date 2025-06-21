@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using NEVOLAplus.Data;
 using NEVOLAplus.Data.Models.Inventory;
 
@@ -164,6 +165,91 @@ namespace NEVOLAplus.Intranet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Export()
+        {
+            var assets = await _context.Assets
+                .Include(a => a.AssetType)
+                .ToListAsync();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage();
+            var ws = package.Workbook.Worksheets.Add("Assets");
+
+            ws.Cells[1, 1].Value = "AssetId";
+            ws.Cells[1, 2].Value = "Name";
+            ws.Cells[1, 3].Value = "PurchaseDate";
+            ws.Cells[1, 4].Value = "Cost";
+            ws.Cells[1, 5].Value = "AssetTypeId";
+
+            for (int i = 0; i < assets.Count; i++)
+            {
+                var a = assets[i];
+                ws.Cells[i + 2, 1].Value = a.AssetId;
+                ws.Cells[i + 2, 2].Value = a.Name;
+                ws.Cells[i + 2, 3].Value = a.PurchaseDate.ToString("yyyy-MM-dd");
+                ws.Cells[i + 2, 4].Value = a.Cost;
+                ws.Cells[i + 2, 5].Value = a.AssetTypeId;
+            }
+
+            var stream = new MemoryStream();
+            package.SaveAs(stream);
+            stream.Position = 0;
+            var fileName = $"Assets-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Import(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            using var stream = new MemoryStream();
+            await file.CopyToAsync(stream);
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage(stream);
+            var ws = package.Workbook.Worksheets.First();
+            var rows = ws.Dimension.Rows;
+
+            for (int row = 2; row <= rows; row++)
+            {
+                var name = ws.Cells[row, 2].Text;
+                var purchaseDateText = ws.Cells[row, 3].Text;
+                var costText = ws.Cells[row, 4].Text;
+                var typeText = ws.Cells[row, 5].Text; // tu może być NAZWA typu
+
+                if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(typeText))
+                    continue;
+
+                DateTime.TryParse(purchaseDateText, out var purchaseDate);
+                decimal.TryParse(costText, out var cost);
+
+                var type = await _context.AssetTypes.FirstOrDefaultAsync(t => t.Name == typeText);
+                if (type == null)
+                {
+                    type = new AssetType { Name = typeText };
+                    _context.AssetTypes.Add(type);
+                    await _context.SaveChangesAsync();
+                }
+
+                var asset = new Asset
+                {
+                    Name = name,
+                    PurchaseDate = purchaseDate == default ? DateTime.Now : purchaseDate,
+                    Cost = cost,
+                    AssetTypeId = type.AssetTypeId
+                };
+                _context.Assets.Add(asset);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
         private bool AssetExists(int id)
         {
             return _context.Assets.Any(e => e.AssetId == id);

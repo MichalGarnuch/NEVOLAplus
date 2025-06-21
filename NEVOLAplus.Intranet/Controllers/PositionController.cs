@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using NEVOLAplus.Data;
 using NEVOLAplus.Data.Models.HR;
 
@@ -163,6 +164,71 @@ namespace NEVOLAplus.Intranet.Controllers
             _context.Positions.RemoveRange(positions);
             await _context.SaveChangesAsync();
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Export()
+        {
+            var positions = await _context.Positions.ToListAsync();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage();
+            var ws = package.Workbook.Worksheets.Add("Positions");
+
+            ws.Cells[1, 1].Value = "PositionId";
+            ws.Cells[1, 2].Value = "Name";
+            ws.Cells[1, 3].Value = "Description";
+
+            for (int i = 0; i < positions.Count; i++)
+            {
+                var p = positions[i];
+                ws.Cells[i + 2, 1].Value = p.PositionId;
+                ws.Cells[i + 2, 2].Value = p.Name;
+                ws.Cells[i + 2, 3].Value = p.Description;
+            }
+
+            var stream = new MemoryStream();
+            package.SaveAs(stream);
+            stream.Position = 0;
+            var fileName = $"Positions-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Import(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            using var stream = new MemoryStream();
+            await file.CopyToAsync(stream);
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage(stream);
+            var ws = package.Workbook.Worksheets.First();
+            var rows = ws.Dimension.Rows;
+
+            for (int row = 2; row <= rows; row++)
+            {
+                var name = ws.Cells[row, 2].Text;
+                var desc = ws.Cells[row, 3].Text;
+
+                if (string.IsNullOrWhiteSpace(name))
+                    continue;
+
+                var pos = new Position
+                {
+                    Name = name,
+                    Description = desc ?? string.Empty
+                };
+                _context.Positions.Add(pos);
+            }
+
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

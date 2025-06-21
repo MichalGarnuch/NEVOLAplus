@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using NEVOLAplus.Data;
 using NEVOLAplus.Data.Models.CMS;
 
@@ -96,6 +97,71 @@ namespace NEVOLAplus.Intranet.Controllers
             _context.TextSnippets.RemoveRange(snippets);
             await _context.SaveChangesAsync();
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Export()
+        {
+            var snippets = await _context.TextSnippets.OrderBy(s => s.Key).ToListAsync();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage();
+            var ws = package.Workbook.Worksheets.Add("TextSnippets");
+
+            ws.Cells[1, 1].Value = "TextSnippetId";
+            ws.Cells[1, 2].Value = "Key";
+            ws.Cells[1, 3].Value = "Content";
+
+            for (int i = 0; i < snippets.Count; i++)
+            {
+                var s = snippets[i];
+                ws.Cells[i + 2, 1].Value = s.TextSnippetId;
+                ws.Cells[i + 2, 2].Value = s.Key;
+                ws.Cells[i + 2, 3].Value = s.Content;
+            }
+
+            var stream = new MemoryStream();
+            package.SaveAs(stream);
+            stream.Position = 0;
+            var fileName = $"TextSnippets-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Import(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return RedirectToAction(nameof(Index));
+
+            using var stream = new MemoryStream();
+            await file.CopyToAsync(stream);
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using var package = new ExcelPackage(stream);
+            var ws = package.Workbook.Worksheets.First();
+            var rows = ws.Dimension.Rows;
+
+            for (int row = 2; row <= rows; row++)
+            {
+                var key = ws.Cells[row, 2].Text;
+                var content = ws.Cells[row, 3].Text;
+
+                if (string.IsNullOrWhiteSpace(key))
+                    continue;
+
+                var snippet = new TextSnippet
+                {
+                    Key = key,
+                    Content = content ?? string.Empty
+                };
+                _context.TextSnippets.Add(snippet);
+            }
+
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }
