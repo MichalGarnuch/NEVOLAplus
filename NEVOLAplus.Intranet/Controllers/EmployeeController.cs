@@ -225,7 +225,7 @@ namespace NEVOLAplus.Intranet.Controllers
                 var last = ws.Cells[row, 3].Text;
                 var email = ws.Cells[row, 4].Text;
                 var phone = ws.Cells[row, 5].Text;
-                var positionText = ws.Cells[row, 6].Text; // tu może być NAZWA stanowiska, a nie ID!
+                var positionText = ws.Cells[row, 6].Text; 
 
                 if (string.IsNullOrWhiteSpace(first) || string.IsNullOrWhiteSpace(last) || string.IsNullOrWhiteSpace(positionText))
                     continue;
@@ -239,7 +239,7 @@ namespace NEVOLAplus.Intranet.Controllers
                         Name = positionText
                     };
                     _context.Positions.Add(position);
-                    await _context.SaveChangesAsync(); // żeby mieć już pozycję w bazie!
+                    await _context.SaveChangesAsync(); 
                 }
 
                 // Tworzymy nowego pracownika

@@ -13,13 +13,11 @@ namespace NEVOLAplus.Intranet.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            // Tu w przyszłości można dodać obsługę uwierzytelniania
             return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Logout()
         {
-            // Po wylogowaniu wyświetlamy stronę logowania
             return RedirectToAction("Login");
         }
     }
