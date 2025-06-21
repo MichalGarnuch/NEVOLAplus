@@ -1,16 +1,31 @@
-﻿@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
-
-@{
-    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Portal_HomeTitle")
-                       ?? "Home Page";
+﻿@{
+    ViewData["Title"] = "Witamy w NEVOLAplus";
 }
 
-<div class="text-center">
-    <h1 class="display-4">
-        @(await SnippetService.GetContentByKeyAsync("Portal_Welcome") ?? "Welcome")
-        </h1>
-    <p>
-        @(await SnippetService.GetContentByKeyAsync("Portal_HomeDescription")
-            ?? "Learn about building Web apps with ASP.NET Core.")
+<div class="bg-image"></div>
+
+<div class="content text-center my-5">
+    <h1 class="display-4">Witamy w NEVOLAplus</h1>
+    <p class="lead">
+        Zintegrowane zarządzanie finansami i zasobami przedsiębiorstwa
     </p>
 </div>
+
+<style>
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('@Url.Content("~/images/background.jpg")') no-repeat center center;
+        background-size: cover;
+        opacity: 0.1;
+        z-index: -1;
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+    }
+</style>

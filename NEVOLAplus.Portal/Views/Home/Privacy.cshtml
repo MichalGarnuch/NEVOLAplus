@@ -1,12 +1,8 @@
-﻿@inject NEVOLAplus.Portal.Services.ITextSnippetService SnippetService
-
-@{
-    ViewData["Title"] = await SnippetService.GetContentByKeyAsync("Portal_Privacy")
-                       ?? "Privacy Policy";
+﻿@{
+    ViewData["Title"] = "Polityka prywatności NEVOLAplus";
 }
 
 <h1>@ViewData["Title"]</h1>
 <p>
-    @(await SnippetService.GetContentByKeyAsync("Portal_PrivacyDescription")
-        ?? "Use this page to detail your site's privacy policy.")
+    Dokładne informacje na temat ochrony danych osobowych w aplikacji NEVOLAplus.
 </p>

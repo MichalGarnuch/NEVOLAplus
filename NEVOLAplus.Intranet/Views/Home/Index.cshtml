@@ -1,8 +1,34 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Witamy w NEVOLAplus";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Tło na całą stronę: -->
+<div class="bg-image"></div>
+
+<!-- Zawartość powitalna -->
+<div class="content text-center my-5">
+    <h1 class="display-4">Witamy w NEVOLAplus</h1>
+    <p class="lead">
+        Zintegrowane zarządzanie finansami i zasobami przedsiębiorstwa
+    </p>
 </div>
+
+<!-- Inline‐CSS: po wczytaniu obrazu w wwwroot/images/background.jpg -->
+<style>
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('@Url.Content("~/images/background.jpg")') no-repeat center center;
+        background-size: cover;
+        opacity: 0.1;
+        z-index: -1; /* pod zawartością i menu */
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+    }
+</style>
