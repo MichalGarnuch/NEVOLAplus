@@ -1,17 +1,74 @@
 # NEVOLAplus
 
-NEVOLAplus to przykładowa aplikacja webowa zbudowana w oparciu o **ASP.NET Core 8**. Projekt składa się z dwu oddzielnych modułów:
+NEVOLAplus to przykładowa aplikacja webowa zbudowana w oparciu o **ASP.NET Core 8**. Projekt składa się z trzech modułów:
 
+- **NEVOLAplus.Data** – biblioteka z modelami i kontekstem Entity Framework Core
 - **NEVOLAplus.Portal** – publiczny portal z prostym systemem CMS
-- **NEVOLAplus.Intranet** – panel administracyjny i zaplecze zarządzające danymi
+- **NEVOLAplus.Intranet** – panel administracyjny do zarządzania danymi
 
 Poniżej znajdują się wskazówki jak uruchomić aplikację lokalnie.
+
+## Architektura
+
+### Warstwa danych
+
+Kontekst `NevolaIntranetContext` definiuje tabele odpowiadające za CMS, moduł HR czy inwentarz. Fragment pliku:
+
+```csharp
+// CMS
+public DbSet<Page> Pages { get; set; } = null!;
+public DbSet<News> News { get; set; } = null!;
+public DbSet<TextSnippet> TextSnippets { get; set; } = null!;
+
+// HR
+public DbSet<Employee> Employees { get; set; } = null!;
+public DbSet<Position> Positions { get; set; } = null!;
+
+// Inventory
+public DbSet<Asset> Assets { get; set; } = null!;
+public DbSet<AssetType> AssetTypes { get; set; } = null!;
+
+// Reservation
+public DbSet<Reservation> Reservations { get; set; } = null!;
+
+// Licensing
+public DbSet<SoftwareLicense> SoftwareLicenses { get; set; } = null!;
+```
+
+### Portal (część publiczna)
+
+Portal wyświetla treści z bazy danych. Do pobierania tekstów używany jest `TextSnippetService`:
+
+```csharp
+public async Task<string?> GetContentByKeyAsync(string key)
+{
+    return await _context.TextSnippets
+                         .Where(s => s.Key == key)
+                         .Select(s => s.Content)
+                         .FirstOrDefaultAsync();
+}
+```
+
+Serwis jest wstrzykiwany w widokach (`@inject ITextSnippetService`) i umożliwia tłumaczenie etykiet menu czy nagłówków stron.
+
+### Intranet (panel administracyjny)
+
+Intranet zawiera kontrolery CRUD do zarządzania danymi oraz narzędzie do edycji stylów portalu. Fragment `StyleController` zapisywujący własny arkusz CSS:
+
+```csharp
+public IActionResult Edit(string cssContent)
+{
+    var path = Path.Combine(_env.ContentRootPath, "..", "NEVOLAplus.Portal", "wwwroot", "css", "custom.css");
+    System.IO.File.WriteAllText(path, cssContent ?? string.Empty);
+    return RedirectToAction(nameof(Edit));
+}
+```
 
 ## Wymagania
 
 - Zainstalowany [SDK .NET 8](https://dotnet.microsoft.com/en-us/download)
-- Dostęp do lokalnej instancji MS SQL Server lub `localdb` (domyślne ustawienie w plikach `appsettings.json`)
-- Opcjonalnie [Docker](https://www.docker.com/) jeśli chcesz uruchamiać obrazy kontenerów
+- Dostęp do lokalnej instancji MS SQL Server lub `localdb` (domyślne ustawienia w `appsettings.json`)
+- Opcjonalnie [Docker](https://www.docker.com/) do uruchamiania aplikacji w kontenerach
 
 ## Szybki start
 
@@ -20,60 +77,75 @@ Poniżej znajdują się wskazówki jak uruchomić aplikację lokalnie.
    git clone <adres-repo>
    cd NEVOLAplus
    ```
-2. Przywróć zależności i przygotuj bazę danych:
+2. Przywróć zależności i utwórz bazę danych:
    ```bash
    dotnet restore
    dotnet ef database update --project NEVOLAplus.Intranet --startup-project NEVOLAplus.Intranet
    ```
-   Polecenie `dotnet ef database update` utworzy bazę z wykorzystaniem migracji Entity Framework.
 3. Uruchom wybraną aplikację:
    ```bash
    dotnet run --project NEVOLAplus.Portal
    # lub
    dotnet run --project NEVOLAplus.Intranet
    ```
-   Domyślne adresy to `http://localhost:5195` dla portalu i `http://localhost:5236` dla intranetu.
+   Domyślne adresy to `http://localhost:5195` dla portalu oraz `http://localhost:5236` dla intranetu.
 
 ## Konfiguracja
 
-Ustawienia aplikacji znajdują się w plikach `appsettings.json`. Najważniejsze opcje to:
+Podstawowe opcje znajdują się w plikach `appsettings.json`:
 
-- `ConnectionStrings:NevolaIntranetContext` – ścieżka połączenia do bazy danych. Można ją nadpisać zmienną środowiskową `ConnectionStrings__NevolaIntranetContext`.
-- `CustomCssPath` – opcjonalna ścieżka do własnego pliku CSS wykorzystywanego przez portal.
+- `ConnectionStrings:NevolaIntranetContext` – ścieżka do bazy danych. Można ją nadpisać zmienną środowiskową `ConnectionStrings__NevolaIntranetContext`.
+- `CustomCssPath` – opcjonalna ścieżka do własnego pliku CSS używanego przez portal.
 
 Zmiany w konfiguracji można wprowadzać przed uruchomieniem aplikacji lub poprzez zmienne środowiskowe.
 
 ## Uruchamianie w Dockerze
 
-Każdy moduł posiada własny `Dockerfile`. Przykładowa komenda budująca i uruchamiająca portal:
+Każdy moduł posiada własny `Dockerfile`. Przykładowe polecenia dla portalu:
 
 ```bash
 docker build -t nevola-portal -f NEVOLAplus.Portal/Dockerfile .
 docker run --rm -p 8080:8080 -p 8081:8081 nevola-portal
 ```
 
-Dla intranetu należy wskazać `NEVOLAplus.Intranet/Dockerfile`. Zmienna `APP_UID` w `Dockerfile` może być użyta do określenia identyfikatora użytkownika w kontenerze.
+Analogicznie można zbudować obraz `NEVOLAplus.Intranet`. Zmienna `APP_UID` w `Dockerfile` pozwala określić identyfikator użytkownika w kontenerze.
 
 ## Zrzuty ekranu
 
-Kilka przykładowych widoków z aplikacji:
-
 ### Logowanie
-![Zrzut ekranu 2025-06-21 170354](https://github.com/user-attachments/assets/5e7c739f-b6f5-4f72-b756-f76a77d8bd56)
-![Zrzut ekranu 2025-06-21 170430](https://github.com/user-attachments/assets/cd32a675-4f16-493e-942e-7237b7689871)
+
+![Zrzut ekranu 2025-07-19 180042](https://github.com/user-attachments/assets/1bcd7a50-07b3-44a1-a297-f6b60279a4ef)
 
 ### Strony główne
-![Zrzut ekranu 2025-06-21 170216](https://github.com/user-attachments/assets/48b9706d-e556-48f8-bf2a-548c6fa97e63)
-![Zrzut ekranu 2025-06-21 170331](https://github.com/user-attachments/assets/83728e78-b46b-4d6d-805a-4beb2c69cddd)
+
+![Zrzut ekranu 2025-07-19 175915](https://github.com/user-attachments/assets/7182830f-9d7a-4106-b510-074e3283a892)
+
+![Zrzut ekranu 2025-07-19 180528](https://github.com/user-attachments/assets/7ef6703a-0b96-426e-ab8e-736738cde9eb)
 
 ### Kilka Pagesów
-![Zrzut ekranu 2025-06-21 170501](https://github.com/user-attachments/assets/bc2dbd67-f88d-41b6-8702-a2e269df7afd)
-![Zrzut ekranu 2025-06-21 170542](https://github.com/user-attachments/assets/9571e884-f1a1-4e10-9a6c-7cf429c29112)
-![Zrzut ekranu 2025-06-21 170609](https://github.com/user-attachments/assets/15018982-cf2b-4b35-aeb0-09b48770ba57)
-![Zrzut ekranu 2025-06-21 170649](https://github.com/user-attachments/assets/d1cdf738-b4e7-482c-b004-a635a0feb6a8)
-![Zrzut ekranu 2025-06-21 170726](https://github.com/user-attachments/assets/18974344-e36d-4ba8-8604-1b51636ae9de)
-![Zrzut ekranu 2025-06-21 170748](https://github.com/user-attachments/assets/0b2fbdda-9983-4680-bd96-a83800bf1045)
-![Zrzut ekranu 2025-06-21 170821](https://github.com/user-attachments/assets/9504fa83-19c8-493f-833e-46d072c33813)
 
-### Struktura projektu
-![Zrzut ekranu 2025-06-21 171108](https://github.com/user-attachments/assets/2256f148-7499-4423-a362-ffd4031258b7)
+![Zrzut ekranu 2025-07-19 180459](https://github.com/user-attachments/assets/44e49c1a-b494-4e0b-a43e-fbcd2bde44a7)
+
+![Zrzut ekranu 2025-07-19 180426](https://github.com/user-attachments/assets/6cbb10ef-5ac8-4048-b544-92d589145a9d)
+
+![Zrzut ekranu 2025-07-19 180355](https://github.com/user-attachments/assets/4242b361-02be-46f7-b505-77358d7ceddb)
+
+![Zrzut ekranu 2025-07-19 180309](https://github.com/user-attachments/assets/1178fa76-62ea-40c8-ac72-850df5254162)
+
+![Zrzut ekranu 2025-07-19 180134](https://github.com/user-attachments/assets/2c943e5d-cae3-4270-affb-f6cb7df775c5)
+
+![Zrzut ekranu 2025-07-19 180726](https://github.com/user-attachments/assets/98c16a83-5650-4596-8812-d08ebabfcb6f)
+
+## Struktura projektu
+
+```
+NEVOLAplus.sln
+├── NEVOLAplus.Data
+│   └── Models, Migrations, Context
+├── NEVOLAplus.Portal
+│   ├── Controllers, Views
+│   └── wwwroot (statyczne zasoby)
+└── NEVOLAplus.Intranet
+    ├── Controllers, Views
+    └── wwwroot
+```
