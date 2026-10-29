@@ -1,0 +1,293 @@
+# NEVOLAplus — mapa plików (1/1)
+
+Wykaz śledzonych plików z badanego commita. Liczba wierszy i nazwy deklaracji są wyciągane automatycznie z dostępnej kopii tekstowej; nie oznaczają ręcznej oceny pliku. Brak opisu oznacza, że zawartość nie była analizowana tą metodą (np. plik binarny, zasób lub pominięty plik).
+
+[Wróć do audytu](AUDYT_EDUKACYJNY.md) · [1](AUDYT_MAPA_01.md)
+
+- [.dockerignore](.dockerignore)
+- [.gitattributes](.gitattributes)
+- [.gitignore](.gitignore)
+- [NEVOLAplus.Data/Class1.cs](NEVOLAplus.Data/Class1.cs) — 7 wierszy; deklaracje: `Class1:3`
+- [NEVOLAplus.Data/Migrations/20250405084441_AddTextSnippetTable.Designer.cs](NEVOLAplus.Data/Migrations/20250405084441_AddTextSnippetTable.Designer.cs) — 330 wierszy; deklaracje: `AddTextSnippetTable:16`
+- [NEVOLAplus.Data/Migrations/20250405084441_AddTextSnippetTable.cs](NEVOLAplus.Data/Migrations/20250405084441_AddTextSnippetTable.cs) — 229 wierszy; deklaracje: `AddTextSnippetTable:9`
+- [NEVOLAplus.Data/Migrations/NevolaIntranetContextModelSnapshot.cs](NEVOLAplus.Data/Migrations/NevolaIntranetContextModelSnapshot.cs) — 327 wierszy; deklaracje: `NevolaIntranetContextModelSnapshot:14`
+- [NEVOLAplus.Data/Models/CMS/News.cs](NEVOLAplus.Data/Models/CMS/News.cs) — 29 wierszy; deklaracje: `News:6`
+- [NEVOLAplus.Data/Models/CMS/Page.cs](NEVOLAplus.Data/Models/CMS/Page.cs) — 30 wierszy; deklaracje: `Page:6`
+- [NEVOLAplus.Data/Models/CMS/TextSnippet.cs](NEVOLAplus.Data/Models/CMS/TextSnippet.cs) — 24 wierszy; deklaracje: `TextSnippet:10`
+- [NEVOLAplus.Data/Models/ErrorViewModel.cs](NEVOLAplus.Data/Models/ErrorViewModel.cs) — 15 wierszy; deklaracje: `ErrorViewModel:9`
+- [NEVOLAplus.Data/Models/HR/Employee.cs](NEVOLAplus.Data/Models/HR/Employee.cs) — 32 wierszy; deklaracje: `Employee:6`
+- [NEVOLAplus.Data/Models/HR/Position.cs](NEVOLAplus.Data/Models/HR/Position.cs) — 20 wierszy; deklaracje: `Position:5`
+- [NEVOLAplus.Data/Models/Inventory/Asset.cs](NEVOLAplus.Data/Models/Inventory/Asset.cs) — 28 wierszy; deklaracje: `Asset:6`
+- [NEVOLAplus.Data/Models/Inventory/AssetType.cs](NEVOLAplus.Data/Models/Inventory/AssetType.cs) — 20 wierszy; deklaracje: `AssetType:5`
+- [NEVOLAplus.Data/Models/Licensing/SoftwareLicense.cs](NEVOLAplus.Data/Models/Licensing/SoftwareLicense.cs) — 29 wierszy; deklaracje: `SoftwareLicense:6`
+- [NEVOLAplus.Data/Models/Reservation/Reservation.cs](NEVOLAplus.Data/Models/Reservation/Reservation.cs) — 35 wierszy; deklaracje: `Reservation:8`
+- [NEVOLAplus.Data/NEVOLAplus.Data.csproj](NEVOLAplus.Data/NEVOLAplus.Data.csproj) — 18 wierszy
+- [NEVOLAplus.Data/NevolaIntranetContext.cs](NEVOLAplus.Data/NevolaIntranetContext.cs) — 49 wierszy; deklaracje: `NevolaIntranetContext:10`
+- [NEVOLAplus.Intranet/Controllers/AccountController.cs](NEVOLAplus.Intranet/Controllers/AccountController.cs) — 24 wierszy; deklaracje: `AccountController:5`
+- [NEVOLAplus.Intranet/Controllers/AssetController.cs](NEVOLAplus.Intranet/Controllers/AssetController.cs) — 258 wierszy; deklaracje: `AssetController:14`
+- [NEVOLAplus.Intranet/Controllers/AssetTypeController.cs](NEVOLAplus.Intranet/Controllers/AssetTypeController.cs) — 239 wierszy; deklaracje: `AssetTypeController:14`
+- [NEVOLAplus.Intranet/Controllers/EmployeeController.cs](NEVOLAplus.Intranet/Controllers/EmployeeController.cs) — 269 wierszy; deklaracje: `EmployeeController:14`
+- [NEVOLAplus.Intranet/Controllers/HomeController.cs](NEVOLAplus.Intranet/Controllers/HomeController.cs) — 31 wierszy; deklaracje: `HomeController:7`
+- [NEVOLAplus.Intranet/Controllers/NewsController.cs](NEVOLAplus.Intranet/Controllers/NewsController.cs) — 251 wierszy; deklaracje: `NewsController:14`
+- [NEVOLAplus.Intranet/Controllers/PageController.cs](NEVOLAplus.Intranet/Controllers/PageController.cs) — 251 wierszy; deklaracje: `PageController:14`
+- [NEVOLAplus.Intranet/Controllers/PositionController.cs](NEVOLAplus.Intranet/Controllers/PositionController.cs) — 240 wierszy; deklaracje: `PositionController:14`
+- [NEVOLAplus.Intranet/Controllers/ReservationController.cs](NEVOLAplus.Intranet/Controllers/ReservationController.cs) — 286 wierszy; deklaracje: `ReservationController:14`
+- [NEVOLAplus.Intranet/Controllers/SoftwareLicenseController.cs](NEVOLAplus.Intranet/Controllers/SoftwareLicenseController.cs) — 246 wierszy; deklaracje: `SoftwareLicenseController:14`
+- [NEVOLAplus.Intranet/Controllers/StyleController.cs](NEVOLAplus.Intranet/Controllers/StyleController.cs) — 37 wierszy; deklaracje: `StyleController:7`
+- [NEVOLAplus.Intranet/Controllers/TextSnippetController.cs](NEVOLAplus.Intranet/Controllers/TextSnippetController.cs) — 168 wierszy; deklaracje: `TextSnippetController:11`
+- [NEVOLAplus.Intranet/Dockerfile](NEVOLAplus.Intranet/Dockerfile)
+- [NEVOLAplus.Intranet/Migrations/20250323112945_InitialCreate.Designer.cs](NEVOLAplus.Intranet/Migrations/20250323112945_InitialCreate.Designer.cs) — 308 wierszy; deklaracje: `InitialCreate:16`
+- [NEVOLAplus.Intranet/Migrations/20250323112945_InitialCreate.cs](NEVOLAplus.Intranet/Migrations/20250323112945_InitialCreate.cs) — 212 wierszy; deklaracje: `InitialCreate:9`
+- [NEVOLAplus.Intranet/Migrations/NevolaIntranetContextModelSnapshot.cs](NEVOLAplus.Intranet/Migrations/NevolaIntranetContextModelSnapshot.cs) — 305 wierszy; deklaracje: `NevolaIntranetContextModelSnapshot:14`
+- [NEVOLAplus.Intranet/NEVOLAplus.Intranet.csproj](NEVOLAplus.Intranet/NEVOLAplus.Intranet.csproj) — 29 wierszy
+- [NEVOLAplus.Intranet/Program.cs](NEVOLAplus.Intranet/Program.cs) — 44 wierszy; deklaracje: `Program:7`
+- [NEVOLAplus.Intranet/Properties/launchSettings.json](NEVOLAplus.Intranet/Properties/launchSettings.json) — 49 wierszy
+- [NEVOLAplus.Intranet/Views/Account/Login.cshtml](NEVOLAplus.Intranet/Views/Account/Login.cshtml) — 32 wierszy
+- [NEVOLAplus.Intranet/Views/Asset/Create.cshtml](NEVOLAplus.Intranet/Views/Asset/Create.cshtml) — 47 wierszy
+- [NEVOLAplus.Intranet/Views/Asset/Delete.cshtml](NEVOLAplus.Intranet/Views/Asset/Delete.cshtml) — 45 wierszy
+- [NEVOLAplus.Intranet/Views/Asset/Details.cshtml](NEVOLAplus.Intranet/Views/Asset/Details.cshtml) — 42 wierszy
+- [NEVOLAplus.Intranet/Views/Asset/Edit.cshtml](NEVOLAplus.Intranet/Views/Asset/Edit.cshtml) — 49 wierszy
+- [NEVOLAplus.Intranet/Views/Asset/Index.cshtml](NEVOLAplus.Intranet/Views/Asset/Index.cshtml) — 61 wierszy
+- [NEVOLAplus.Intranet/Views/AssetType/Create.cshtml](NEVOLAplus.Intranet/Views/AssetType/Create.cshtml) — 38 wierszy
+- [NEVOLAplus.Intranet/Views/AssetType/Delete.cshtml](NEVOLAplus.Intranet/Views/AssetType/Delete.cshtml) — 33 wierszy
+- [NEVOLAplus.Intranet/Views/AssetType/Details.cshtml](NEVOLAplus.Intranet/Views/AssetType/Details.cshtml) — 30 wierszy
+- [NEVOLAplus.Intranet/Views/AssetType/Edit.cshtml](NEVOLAplus.Intranet/Views/AssetType/Edit.cshtml) — 39 wierszy
+- [NEVOLAplus.Intranet/Views/AssetType/Index.cshtml](NEVOLAplus.Intranet/Views/AssetType/Index.cshtml) — 58 wierszy
+- [NEVOLAplus.Intranet/Views/Employee/Create.cshtml](NEVOLAplus.Intranet/Views/Employee/Create.cshtml) — 52 wierszy
+- [NEVOLAplus.Intranet/Views/Employee/Delete.cshtml](NEVOLAplus.Intranet/Views/Employee/Delete.cshtml) — 51 wierszy
+- [NEVOLAplus.Intranet/Views/Employee/Details.cshtml](NEVOLAplus.Intranet/Views/Employee/Details.cshtml) — 48 wierszy
+- [NEVOLAplus.Intranet/Views/Employee/Edit.cshtml](NEVOLAplus.Intranet/Views/Employee/Edit.cshtml) — 54 wierszy
+- [NEVOLAplus.Intranet/Views/Employee/Index.cshtml](NEVOLAplus.Intranet/Views/Employee/Index.cshtml) — 61 wierszy
+- [NEVOLAplus.Intranet/Views/Home/Index.cshtml](NEVOLAplus.Intranet/Views/Home/Index.cshtml) — 34 wierszy
+- [NEVOLAplus.Intranet/Views/Home/Privacy.cshtml](NEVOLAplus.Intranet/Views/Home/Privacy.cshtml) — 8 wierszy
+- [NEVOLAplus.Intranet/Views/News/Create.cshtml](NEVOLAplus.Intranet/Views/News/Create.cshtml) — 48 wierszy
+- [NEVOLAplus.Intranet/Views/News/Delete.cshtml](NEVOLAplus.Intranet/Views/News/Delete.cshtml) — 45 wierszy
+- [NEVOLAplus.Intranet/Views/News/Details.cshtml](NEVOLAplus.Intranet/Views/News/Details.cshtml) — 42 wierszy
+- [NEVOLAplus.Intranet/Views/News/Edit.cshtml](NEVOLAplus.Intranet/Views/News/Edit.cshtml) — 49 wierszy
+- [NEVOLAplus.Intranet/Views/News/Index.cshtml](NEVOLAplus.Intranet/Views/News/Index.cshtml) — 59 wierszy
+- [NEVOLAplus.Intranet/Views/Page/Create.cshtml](NEVOLAplus.Intranet/Views/Page/Create.cshtml) — 48 wierszy
+- [NEVOLAplus.Intranet/Views/Page/Delete.cshtml](NEVOLAplus.Intranet/Views/Page/Delete.cshtml) — 45 wierszy
+- [NEVOLAplus.Intranet/Views/Page/Details.cshtml](NEVOLAplus.Intranet/Views/Page/Details.cshtml) — 42 wierszy
+- [NEVOLAplus.Intranet/Views/Page/Edit.cshtml](NEVOLAplus.Intranet/Views/Page/Edit.cshtml) — 49 wierszy
+- [NEVOLAplus.Intranet/Views/Page/Index.cshtml](NEVOLAplus.Intranet/Views/Page/Index.cshtml) — 64 wierszy
+- [NEVOLAplus.Intranet/Views/Position/Create.cshtml](NEVOLAplus.Intranet/Views/Position/Create.cshtml) — 38 wierszy
+- [NEVOLAplus.Intranet/Views/Position/Delete.cshtml](NEVOLAplus.Intranet/Views/Position/Delete.cshtml) — 33 wierszy
+- [NEVOLAplus.Intranet/Views/Position/Details.cshtml](NEVOLAplus.Intranet/Views/Position/Details.cshtml) — 30 wierszy
+- [NEVOLAplus.Intranet/Views/Position/Edit.cshtml](NEVOLAplus.Intranet/Views/Position/Edit.cshtml) — 39 wierszy
+- [NEVOLAplus.Intranet/Views/Position/Index.cshtml](NEVOLAplus.Intranet/Views/Position/Index.cshtml) — 57 wierszy
+- [NEVOLAplus.Intranet/Views/Reservation/Create.cshtml](NEVOLAplus.Intranet/Views/Reservation/Create.cshtml) — 51 wierszy
+- [NEVOLAplus.Intranet/Views/Reservation/Delete.cshtml](NEVOLAplus.Intranet/Views/Reservation/Delete.cshtml) — 51 wierszy
+- [NEVOLAplus.Intranet/Views/Reservation/Details.cshtml](NEVOLAplus.Intranet/Views/Reservation/Details.cshtml) — 48 wierszy
+- [NEVOLAplus.Intranet/Views/Reservation/Edit.cshtml](NEVOLAplus.Intranet/Views/Reservation/Edit.cshtml) — 54 wierszy
+- [NEVOLAplus.Intranet/Views/Reservation/Index.cshtml](NEVOLAplus.Intranet/Views/Reservation/Index.cshtml) — 63 wierszy
+- [NEVOLAplus.Intranet/Views/Shared/Error.cshtml](NEVOLAplus.Intranet/Views/Shared/Error.cshtml) — 25 wierszy
+- [NEVOLAplus.Intranet/Views/Shared/_Layout.cshtml](NEVOLAplus.Intranet/Views/Shared/_Layout.cshtml) — 92 wierszy; deklaracje: `toggleSidebar:84`
+- [NEVOLAplus.Intranet/Views/Shared/_Layout.cshtml.css](NEVOLAplus.Intranet/Views/Shared/_Layout.cshtml.css) — 48 wierszy
+- [NEVOLAplus.Intranet/Views/Shared/_ValidationScriptsPartial.cshtml](NEVOLAplus.Intranet/Views/Shared/_ValidationScriptsPartial.cshtml) — 2 wierszy
+- [NEVOLAplus.Intranet/Views/SoftwareLicense/Create.cshtml](NEVOLAplus.Intranet/Views/SoftwareLicense/Create.cshtml) — 43 wierszy
+- [NEVOLAplus.Intranet/Views/SoftwareLicense/Delete.cshtml](NEVOLAplus.Intranet/Views/SoftwareLicense/Delete.cshtml) — 39 wierszy
+- [NEVOLAplus.Intranet/Views/SoftwareLicense/Details.cshtml](NEVOLAplus.Intranet/Views/SoftwareLicense/Details.cshtml) — 36 wierszy
+- [NEVOLAplus.Intranet/Views/SoftwareLicense/Edit.cshtml](NEVOLAplus.Intranet/Views/SoftwareLicense/Edit.cshtml) — 44 wierszy
+- [NEVOLAplus.Intranet/Views/SoftwareLicense/Index.cshtml](NEVOLAplus.Intranet/Views/SoftwareLicense/Index.cshtml) — 59 wierszy
+- [NEVOLAplus.Intranet/Views/Style/Edit.cshtml](NEVOLAplus.Intranet/Views/Style/Edit.cshtml) — 11 wierszy
+- [NEVOLAplus.Intranet/Views/TextSnippet/Create.cshtml](NEVOLAplus.Intranet/Views/TextSnippet/Create.cshtml) — 24 wierszy
+- [NEVOLAplus.Intranet/Views/TextSnippet/Create.cshtml.cs](NEVOLAplus.Intranet/Views/TextSnippet/Create.cshtml.cs) — 12 wierszy; deklaracje: `CreateModel:6`
+- [NEVOLAplus.Intranet/Views/TextSnippet/Delete.cshtml](NEVOLAplus.Intranet/Views/TextSnippet/Delete.cshtml) — 19 wierszy
+- [NEVOLAplus.Intranet/Views/TextSnippet/Delete.cshtml.cs](NEVOLAplus.Intranet/Views/TextSnippet/Delete.cshtml.cs) — 12 wierszy; deklaracje: `DeleteModel:6`
+- [NEVOLAplus.Intranet/Views/TextSnippet/Details.cshtml](NEVOLAplus.Intranet/Views/TextSnippet/Details.cshtml) — 17 wierszy
+- [NEVOLAplus.Intranet/Views/TextSnippet/Details.cshtml.cs](NEVOLAplus.Intranet/Views/TextSnippet/Details.cshtml.cs) — 12 wierszy; deklaracje: `DetailsModel:6`
+- [NEVOLAplus.Intranet/Views/TextSnippet/Edit.cshtml](NEVOLAplus.Intranet/Views/TextSnippet/Edit.cshtml) — 25 wierszy
+- [NEVOLAplus.Intranet/Views/TextSnippet/Edit.cshtml.cs](NEVOLAplus.Intranet/Views/TextSnippet/Edit.cshtml.cs) — 12 wierszy; deklaracje: `EditModel:6`
+- [NEVOLAplus.Intranet/Views/TextSnippet/Index.cshtml](NEVOLAplus.Intranet/Views/TextSnippet/Index.cshtml) — 50 wierszy
+- [NEVOLAplus.Intranet/Views/TextSnippet/Index.cshtml.cs](NEVOLAplus.Intranet/Views/TextSnippet/Index.cshtml.cs) — 12 wierszy; deklaracje: `IndexModel:6`
+- [NEVOLAplus.Intranet/Views/_ViewImports.cshtml](NEVOLAplus.Intranet/Views/_ViewImports.cshtml) — 4 wierszy
+- [NEVOLAplus.Intranet/Views/_ViewStart.cshtml](NEVOLAplus.Intranet/Views/_ViewStart.cshtml) — 3 wierszy
+- [NEVOLAplus.Intranet/appsettings.Development.json](NEVOLAplus.Intranet/appsettings.Development.json) — 8 wierszy
+- [NEVOLAplus.Intranet/appsettings.json](NEVOLAplus.Intranet/appsettings.json) — 12 wierszy
+- [NEVOLAplus.Intranet/wwwroot/css/site.css](NEVOLAplus.Intranet/wwwroot/css/site.css) — 22 wierszy
+- [NEVOLAplus.Intranet/wwwroot/favicon.ico](NEVOLAplus.Intranet/wwwroot/favicon.ico)
+- [NEVOLAplus.Intranet/wwwroot/image/Logo.jpg](NEVOLAplus.Intranet/wwwroot/image/Logo.jpg)
+- [NEVOLAplus.Intranet/wwwroot/image/Szukaj.jpg](NEVOLAplus.Intranet/wwwroot/image/Szukaj.jpg)
+- [NEVOLAplus.Intranet/wwwroot/image/Wyloguj.jpg](NEVOLAplus.Intranet/wwwroot/image/Wyloguj.jpg)
+- [NEVOLAplus.Intranet/wwwroot/image/background.jpg](NEVOLAplus.Intranet/wwwroot/image/background.jpg)
+- [NEVOLAplus.Intranet/wwwroot/js/site.js](NEVOLAplus.Intranet/wwwroot/js/site.js) — 4 wierszy
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/LICENSE](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/LICENSE)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.js](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map](NEVOLAplus.Intranet/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js) — 435 wierszy; deklaracje: `setValidationValues:28`, `splitAndTrim:35`, `escapeAttributeValue:39`, `getModelPrefix:44`, `appendModelPrefix:48`
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/LICENSE.md](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/LICENSE.md) — 22 wierszy
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/additional-methods.js](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/additional-methods.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/additional-methods.min.js](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/additional-methods.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/jquery.validate.js](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/jquery.validate.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js](NEVOLAplus.Intranet/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery/LICENSE.txt](NEVOLAplus.Intranet/wwwroot/lib/jquery/LICENSE.txt)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery/dist/jquery.js](NEVOLAplus.Intranet/wwwroot/lib/jquery/dist/jquery.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery/dist/jquery.min.js](NEVOLAplus.Intranet/wwwroot/lib/jquery/dist/jquery.min.js)
+- [NEVOLAplus.Intranet/wwwroot/lib/jquery/dist/jquery.min.map](NEVOLAplus.Intranet/wwwroot/lib/jquery/dist/jquery.min.map)
+- [NEVOLAplus.Portal/Controllers/AccountController.cs](NEVOLAplus.Portal/Controllers/AccountController.cs) — 26 wierszy; deklaracje: `AccountController:5`
+- [NEVOLAplus.Portal/Controllers/AssetController.cs](NEVOLAplus.Portal/Controllers/AssetController.cs) — 125 wierszy; deklaracje: `AssetController:13`
+- [NEVOLAplus.Portal/Controllers/EmployeeController.cs](NEVOLAplus.Portal/Controllers/EmployeeController.cs) — 144 wierszy; deklaracje: `EmployeeController:13`
+- [NEVOLAplus.Portal/Controllers/HomeController.cs](NEVOLAplus.Portal/Controllers/HomeController.cs) — 31 wierszy; deklaracje: `HomeController:7`
+- [NEVOLAplus.Portal/Controllers/NewsController.cs](NEVOLAplus.Portal/Controllers/NewsController.cs) — 157 wierszy; deklaracje: `NewsController:13`
+- [NEVOLAplus.Portal/Controllers/PageController.cs](NEVOLAplus.Portal/Controllers/PageController.cs) — 157 wierszy; deklaracje: `PageController:13`
+- [NEVOLAplus.Portal/Controllers/ReservationController.cs](NEVOLAplus.Portal/Controllers/ReservationController.cs) — 177 wierszy; deklaracje: `ReservationController:13`
+- [NEVOLAplus.Portal/Controllers/TextSnippetController.cs](NEVOLAplus.Portal/Controllers/TextSnippetController.cs) — 157 wierszy; deklaracje: `TextSnippetController:13`
+- [NEVOLAplus.Portal/Dockerfile](NEVOLAplus.Portal/Dockerfile)
+- [NEVOLAplus.Portal/Models/ErrorViewModel.cs](NEVOLAplus.Portal/Models/ErrorViewModel.cs) — 9 wierszy; deklaracje: `ErrorViewModel:3`
+- [NEVOLAplus.Portal/NEVOLAplus.Portal.csproj](NEVOLAplus.Portal/NEVOLAplus.Portal.csproj) — 28 wierszy
+- [NEVOLAplus.Portal/Program.cs](NEVOLAplus.Portal/Program.cs) — 45 wierszy; deklaracje: `Program:6`
+- [NEVOLAplus.Portal/Properties/launchSettings.json](NEVOLAplus.Portal/Properties/launchSettings.json) — 49 wierszy
+- [NEVOLAplus.Portal/Services/ITextSnippetService.cs](NEVOLAplus.Portal/Services/ITextSnippetService.cs) — 17 wierszy; deklaracje: `ITextSnippetService:8`
+- [NEVOLAplus.Portal/Services/TextSnippetService.cs](NEVOLAplus.Portal/Services/TextSnippetService.cs) — 31 wierszy; deklaracje: `TextSnippetService:12`
+- [NEVOLAplus.Portal/Views/Account/Login.cshtml](NEVOLAplus.Portal/Views/Account/Login.cshtml) — 32 wierszy
+- [NEVOLAplus.Portal/Views/Asset/Create.cshtml](NEVOLAplus.Portal/Views/Asset/Create.cshtml) — 76 wierszy
+- [NEVOLAplus.Portal/Views/Asset/Delete.cshtml](NEVOLAplus.Portal/Views/Asset/Delete.cshtml) — 55 wierszy
+- [NEVOLAplus.Portal/Views/Asset/Details.cshtml](NEVOLAplus.Portal/Views/Asset/Details.cshtml) — 50 wierszy
+- [NEVOLAplus.Portal/Views/Asset/Edit.cshtml](NEVOLAplus.Portal/Views/Asset/Edit.cshtml) — 76 wierszy
+- [NEVOLAplus.Portal/Views/Asset/Index.cshtml](NEVOLAplus.Portal/Views/Asset/Index.cshtml) — 66 wierszy
+- [NEVOLAplus.Portal/Views/Employee/Create.cshtml](NEVOLAplus.Portal/Views/Employee/Create.cshtml) — 84 wierszy
+- [NEVOLAplus.Portal/Views/Employee/Delete.cshtml](NEVOLAplus.Portal/Views/Employee/Delete.cshtml) — 61 wierszy
+- [NEVOLAplus.Portal/Views/Employee/Details.cshtml](NEVOLAplus.Portal/Views/Employee/Details.cshtml) — 55 wierszy
+- [NEVOLAplus.Portal/Views/Employee/Edit.cshtml](NEVOLAplus.Portal/Views/Employee/Edit.cshtml) — 84 wierszy
+- [NEVOLAplus.Portal/Views/Employee/Index.cshtml](NEVOLAplus.Portal/Views/Employee/Index.cshtml) — 63 wierszy
+- [NEVOLAplus.Portal/Views/Home/Index.cshtml](NEVOLAplus.Portal/Views/Home/Index.cshtml) — 31 wierszy
+- [NEVOLAplus.Portal/Views/Home/Privacy.cshtml](NEVOLAplus.Portal/Views/Home/Privacy.cshtml) — 8 wierszy
+- [NEVOLAplus.Portal/Views/News/Create.cshtml](NEVOLAplus.Portal/Views/News/Create.cshtml) — 75 wierszy
+- [NEVOLAplus.Portal/Views/News/Delete.cshtml](NEVOLAplus.Portal/Views/News/Delete.cshtml) — 59 wierszy
+- [NEVOLAplus.Portal/Views/News/Details.cshtml](NEVOLAplus.Portal/Views/News/Details.cshtml) — 54 wierszy
+- [NEVOLAplus.Portal/Views/News/Edit.cshtml](NEVOLAplus.Portal/Views/News/Edit.cshtml) — 76 wierszy
+- [NEVOLAplus.Portal/Views/News/Index.cshtml](NEVOLAplus.Portal/Views/News/Index.cshtml) — 58 wierszy
+- [NEVOLAplus.Portal/Views/Page/Create.cshtml](NEVOLAplus.Portal/Views/Page/Create.cshtml) — 81 wierszy
+- [NEVOLAplus.Portal/Views/Page/Delete.cshtml](NEVOLAplus.Portal/Views/Page/Delete.cshtml) — 61 wierszy
+- [NEVOLAplus.Portal/Views/Page/Details.cshtml](NEVOLAplus.Portal/Views/Page/Details.cshtml) — 55 wierszy
+- [NEVOLAplus.Portal/Views/Page/Edit.cshtml](NEVOLAplus.Portal/Views/Page/Edit.cshtml) — 82 wierszy
+- [NEVOLAplus.Portal/Views/Page/Index.cshtml](NEVOLAplus.Portal/Views/Page/Index.cshtml) — 57 wierszy
+- [NEVOLAplus.Portal/Views/Reservation/Create.cshtml](NEVOLAplus.Portal/Views/Reservation/Create.cshtml) — 91 wierszy
+- [NEVOLAplus.Portal/Views/Reservation/Delete.cshtml](NEVOLAplus.Portal/Views/Reservation/Delete.cshtml) — 68 wierszy
+- [NEVOLAplus.Portal/Views/Reservation/Details.cshtml](NEVOLAplus.Portal/Views/Reservation/Details.cshtml) — 62 wierszy
+- [NEVOLAplus.Portal/Views/Reservation/Edit.cshtml](NEVOLAplus.Portal/Views/Reservation/Edit.cshtml) — 92 wierszy
+- [NEVOLAplus.Portal/Views/Reservation/Index.cshtml](NEVOLAplus.Portal/Views/Reservation/Index.cshtml) — 67 wierszy
+- [NEVOLAplus.Portal/Views/Shared/Error.cshtml](NEVOLAplus.Portal/Views/Shared/Error.cshtml) — 25 wierszy
+- [NEVOLAplus.Portal/Views/Shared/_Layout.cshtml](NEVOLAplus.Portal/Views/Shared/_Layout.cshtml) — 92 wierszy; deklaracje: `toggleSidebar:84`
+- [NEVOLAplus.Portal/Views/Shared/_Layout.cshtml.css](NEVOLAplus.Portal/Views/Shared/_Layout.cshtml.css) — 48 wierszy
+- [NEVOLAplus.Portal/Views/Shared/_ValidationScriptsPartial.cshtml](NEVOLAplus.Portal/Views/Shared/_ValidationScriptsPartial.cshtml) — 2 wierszy
+- [NEVOLAplus.Portal/Views/TextSnippet/Create.cshtml](NEVOLAplus.Portal/Views/TextSnippet/Create.cshtml) — 38 wierszy
+- [NEVOLAplus.Portal/Views/TextSnippet/Delete.cshtml](NEVOLAplus.Portal/Views/TextSnippet/Delete.cshtml) — 33 wierszy
+- [NEVOLAplus.Portal/Views/TextSnippet/Details.cshtml](NEVOLAplus.Portal/Views/TextSnippet/Details.cshtml) — 30 wierszy
+- [NEVOLAplus.Portal/Views/TextSnippet/Edit.cshtml](NEVOLAplus.Portal/Views/TextSnippet/Edit.cshtml) — 39 wierszy
+- [NEVOLAplus.Portal/Views/TextSnippet/Index.cshtml](NEVOLAplus.Portal/Views/TextSnippet/Index.cshtml) — 33 wierszy
+- [NEVOLAplus.Portal/Views/_ViewImports.cshtml](NEVOLAplus.Portal/Views/_ViewImports.cshtml) — 3 wierszy
+- [NEVOLAplus.Portal/Views/_ViewStart.cshtml](NEVOLAplus.Portal/Views/_ViewStart.cshtml) — 3 wierszy
+- [NEVOLAplus.Portal/appsettings.Development.json](NEVOLAplus.Portal/appsettings.Development.json) — 8 wierszy
+- [NEVOLAplus.Portal/appsettings.json](NEVOLAplus.Portal/appsettings.json) — 13 wierszy
+- [NEVOLAplus.Portal/wwwroot/css/custom.css](NEVOLAplus.Portal/wwwroot/css/custom.css) — 37 wierszy
+- [NEVOLAplus.Portal/wwwroot/css/site.css](NEVOLAplus.Portal/wwwroot/css/site.css) — 22 wierszy
+- [NEVOLAplus.Portal/wwwroot/favicon.ico](NEVOLAplus.Portal/wwwroot/favicon.ico)
+- [NEVOLAplus.Portal/wwwroot/image/Logo.jpg](NEVOLAplus.Portal/wwwroot/image/Logo.jpg)
+- [NEVOLAplus.Portal/wwwroot/image/Szukaj.jpg](NEVOLAplus.Portal/wwwroot/image/Szukaj.jpg)
+- [NEVOLAplus.Portal/wwwroot/image/Wyloguj.jpg](NEVOLAplus.Portal/wwwroot/image/Wyloguj.jpg)
+- [NEVOLAplus.Portal/wwwroot/image/background.jpg](NEVOLAplus.Portal/wwwroot/image/background.jpg)
+- [NEVOLAplus.Portal/wwwroot/js/site.js](NEVOLAplus.Portal/wwwroot/js/site.js) — 4 wierszy
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/LICENSE](NEVOLAplus.Portal/wwwroot/lib/bootstrap/LICENSE)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.js](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.js)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map](NEVOLAplus.Portal/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt](NEVOLAplus.Portal/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js](NEVOLAplus.Portal/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js) — 435 wierszy; deklaracje: `setValidationValues:28`, `splitAndTrim:35`, `escapeAttributeValue:39`, `getModelPrefix:44`, `appendModelPrefix:48`
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js](NEVOLAplus.Portal/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation/LICENSE.md](NEVOLAplus.Portal/wwwroot/lib/jquery-validation/LICENSE.md) — 22 wierszy
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/additional-methods.js](NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/additional-methods.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/additional-methods.min.js](NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/additional-methods.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/jquery.validate.js](NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/jquery.validate.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js](NEVOLAplus.Portal/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery/LICENSE.txt](NEVOLAplus.Portal/wwwroot/lib/jquery/LICENSE.txt)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery/dist/jquery.js](NEVOLAplus.Portal/wwwroot/lib/jquery/dist/jquery.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery/dist/jquery.min.js](NEVOLAplus.Portal/wwwroot/lib/jquery/dist/jquery.min.js)
+- [NEVOLAplus.Portal/wwwroot/lib/jquery/dist/jquery.min.map](NEVOLAplus.Portal/wwwroot/lib/jquery/dist/jquery.min.map)
+- [NEVOLAplus.sln](NEVOLAplus.sln)
+- [README.md](README.md) — 151 wierszy
