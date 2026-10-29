@@ -1,0 +1,23 @@
+{
+  "repository": "NEVOLAplus",
+  "branch": "wersja-inzynierska-2026",
+  "base_ref": "master",
+  "base_commit": "bd3f7be681dc6d8dfe87a8376278bdd4b595ae6f",
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "command_or_scope": "engineering-tests: AdminAccess przez Roslyn/.NET 8",
+      "result": "PASS: 5 sprawdzeń danych dostępowych"
+    },
+    {
+      "command_or_scope": "Kompilacja AccountController z AdminAccess",
+      "result": "PASS: referencje ASP.NET 8.0.33"
+    },
+    {
+      "command_or_scope": "Pełna solucja / SQL Server / test HTTP cookies",
+      "result": "NIEWYKONANY"
+    }
+  ],
+  "limitations": "MSBuild nie inicjalizuje się poprawnie w tym środowisku; nie uruchomiono całej aplikacji EF/Razor. Nie zweryfikowano widoków w przeglądarce, rzeczywistego proxy, Data Protection pomiędzy replikami ani integracji z bazą.",
+  "production_deployment_performed": false
+}

@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = null;
 }
 
@@ -62,9 +62,7 @@
                     <img src="/image/Szukaj.jpg" alt="Szukaj" style="height: 24px; cursor: pointer;" onclick="this.closest('form').submit()" />
 
                     <!-- Sama ikona wyloguj -->
-                    <a asp-controller="Account" asp-action="Logout" class="ms-3">
-                        <img src="/image/Wyloguj.jpg" alt="Wyloguj" style="height: 24px; cursor: pointer;" />
-                    </a>
+                    <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit" class="btn btn-link">Wyloguj</button></form>
                 </form>
             </div>
         </nav>
